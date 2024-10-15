@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Mars_Rover.src.Enum;
 
 namespace Mars_Rover.src.Services
 {
@@ -41,21 +42,7 @@ namespace Mars_Rover.src.Services
 
         public void RotateRight90Degrees()
         {
-            switch (ModelRover.Orientation)
-            {
-                case Enum.OrientationsEnum.NORD:
-                    ModelRover.Orientation = Enum.OrientationsEnum.EST;
-                    break;
-                case Enum.OrientationsEnum.SUD:
-                    ModelRover.Orientation = Enum.OrientationsEnum.OUEST;
-                    break;
-                case Enum.OrientationsEnum.EST:
-                    ModelRover.Orientation = Enum.OrientationsEnum.SUD;
-                    break;
-                case Enum.OrientationsEnum.OUEST:
-                    ModelRover.Orientation = Enum.OrientationsEnum.NORD;
-                    break;
-            }
+            SetOrientationAfterRotation(true);
 
             ModelRover.RotationAngle += 90;
 
@@ -64,25 +51,31 @@ namespace Mars_Rover.src.Services
 
         public void RotateLeft90Degrees()
         {
-            switch (ModelRover.Orientation)
-            {
-                case Enum.OrientationsEnum.NORD:
-                    ModelRover.Orientation = Enum.OrientationsEnum.OUEST;
-                    break;
-                case Enum.OrientationsEnum.SUD:
-                    ModelRover.Orientation = Enum.OrientationsEnum.EST;
-                    break;
-                case Enum.OrientationsEnum.EST:
-                    ModelRover.Orientation = Enum.OrientationsEnum.NORD;
-                    break;
-                case Enum.OrientationsEnum.OUEST:
-                    ModelRover.Orientation = Enum.OrientationsEnum.SUD;
-                    break;
-            }
+            SetOrientationAfterRotation(false);
 
             ModelRover.RotationAngle -= 90;
 
             ModelRover.SendState();
         }
+        
+        private void SetOrientationAfterRotation(bool isRight)
+        {
+            switch (ModelRover.Orientation)
+            {
+                case Enum.OrientationsEnum.NORD:
+                    ModelRover.Orientation = isRight ? OrientationsEnum.EST : OrientationsEnum.OUEST;
+                    break;
+                case Enum.OrientationsEnum.SUD:
+                    ModelRover.Orientation = isRight ? OrientationsEnum.OUEST : OrientationsEnum.EST;
+                    break;
+                case Enum.OrientationsEnum.EST:
+                    ModelRover.Orientation = isRight ? OrientationsEnum.SUD : OrientationsEnum.NORD;
+                    break;
+                case Enum.OrientationsEnum.OUEST:
+                    ModelRover.Orientation = isRight ? OrientationsEnum.NORD : OrientationsEnum.SUD;
+                    break;
+            }
+        }
+        
     }
 }
