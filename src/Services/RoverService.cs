@@ -21,6 +21,7 @@ namespace Mars_Rover.src.Services
         {
             ModelRover.Horizontal = x;
             ModelRover.Vertical = y;
+            ModelRover.SendState();
         }
 
         public void RotateToMax90Degrees(double angle)
@@ -33,6 +34,8 @@ namespace Mars_Rover.src.Services
             {
                 ModelRover.RotationAngle += angle;
             }
+
+            ModelRover.SendState();
 
         }
 
@@ -55,6 +58,8 @@ namespace Mars_Rover.src.Services
             }
 
             ModelRover.RotationAngle += 90;
+
+            ModelRover.SendState();
         }
 
         public void RotateLeft90Degrees()
@@ -76,6 +81,8 @@ namespace Mars_Rover.src.Services
             }
 
             ModelRover.RotationAngle -= 90;
+
+            ModelRover.SendState();
         }
     }
 }

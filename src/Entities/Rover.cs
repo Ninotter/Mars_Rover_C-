@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Mars_Rover.src.Entities
 {
-    public class Rover
+    public class Rover : IStateSender
     {
         #region Properties
 
@@ -20,6 +20,13 @@ namespace Mars_Rover.src.Entities
 
         public double RotationAngle { get; set; }
 
+        #endregion
+
+        #region Methods
+        public void SendState()
+        {
+            // Envoi de la position et de la rotation
+        }
         #endregion
     }
 }
