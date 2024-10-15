@@ -15,8 +15,8 @@ namespace Mars_Rover.src.Services
 
         public void Move(double x, double y)
         {
-            VehicleModel.vehicleState.Horizontal = x;
-            VehicleModel.vehicleState.Vertical = y;
+            VehicleModel.VehicleState.Horizontal = x;
+            VehicleModel.VehicleState.Vertical = y;
             VehicleModel.SendState();
         }
 
@@ -28,7 +28,7 @@ namespace Mars_Rover.src.Services
             }
             else
             {
-                VehicleModel.vehicleState.RotationAngle += angle;
+                VehicleModel.VehicleState.RotationAngle += angle;
             }
 
             VehicleModel.SendState();
@@ -38,7 +38,7 @@ namespace Mars_Rover.src.Services
         {
             SetOrientationAfterRotation(true);
 
-            VehicleModel.vehicleState.RotationAngle += 90;
+            VehicleModel.VehicleState.RotationAngle += 90;
 
             VehicleModel.SendState();
         }
@@ -47,7 +47,7 @@ namespace Mars_Rover.src.Services
         {
             SetOrientationAfterRotation(false);
             
-            VehicleModel.vehicleState.RotationAngle -= 90;
+            VehicleModel.VehicleState.RotationAngle -= 90;
 
             VehicleModel.SendState();
         }
