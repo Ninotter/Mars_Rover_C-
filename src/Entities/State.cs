@@ -1,11 +1,4 @@
-﻿using Mars_Rover.src.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Mars_Rover.src.Entities
+﻿namespace Mars_Rover.src.Entities
 {
     public class State
     {
@@ -13,7 +6,25 @@ namespace Mars_Rover.src.Entities
         
         public double Vertical { get; set; }
         
-        public double RotationAngle { get; set; }
+        private double rotationAngle;
+        public double RotationAngle {
+            get { return rotationAngle; }
+            set
+            {
+                if (value >= 360)
+                {
+                    rotationAngle = value - 360;
+                }
+                else if (value < 0)
+                {
+                    rotationAngle = 360 + value;
+                }
+                else
+                {
+                    rotationAngle = value;
+                }
+            }
+        }
         
         public State(double horizontal, double vertical, double rotationAngle)
         {

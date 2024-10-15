@@ -1,11 +1,6 @@
 ﻿using Mars_Rover.src.Entities;
-using Mars_Rover.src.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Mars_Rover.src.Enum;
+using Mars_Rover.src.Interfaces;
 
 namespace Mars_Rover.src.Services
 {
@@ -20,8 +15,8 @@ namespace Mars_Rover.src.Services
 
         public void Move(double x, double y)
         {
-            ModelRover.Horizontal = x;
-            ModelRover.Vertical = y;
+            ModelRover.vehicleState.Horizontal = x;
+            ModelRover.vehicleState.Vertical = y;
             ModelRover.SendState();
         }
 
@@ -33,7 +28,7 @@ namespace Mars_Rover.src.Services
             }
             else
             {
-                ModelRover.RotationAngle += angle;
+                ModelRover.vehicleState.RotationAngle += angle;
             }
 
             ModelRover.SendState();
@@ -44,7 +39,7 @@ namespace Mars_Rover.src.Services
         {
             SetOrientationAfterRotation(true);
 
-            ModelRover.RotationAngle += 90;
+            ModelRover.vehicleState.RotationAngle += 90;
 
             ModelRover.SendState();
         }
@@ -53,7 +48,7 @@ namespace Mars_Rover.src.Services
         {
             SetOrientationAfterRotation(false);
 
-            ModelRover.RotationAngle -= 90;
+            ModelRover.vehicleState.RotationAngle -= 90;
 
             ModelRover.SendState();
         }
@@ -62,16 +57,16 @@ namespace Mars_Rover.src.Services
         {
             switch (ModelRover.Orientation)
             {
-                case Enum.OrientationsEnum.NORD:
+                case OrientationsEnum.NORD:
                     ModelRover.Orientation = isRight ? OrientationsEnum.EST : OrientationsEnum.OUEST;
                     break;
-                case Enum.OrientationsEnum.SUD:
+                case OrientationsEnum.SUD:
                     ModelRover.Orientation = isRight ? OrientationsEnum.OUEST : OrientationsEnum.EST;
                     break;
-                case Enum.OrientationsEnum.EST:
+                case OrientationsEnum.EST:
                     ModelRover.Orientation = isRight ? OrientationsEnum.SUD : OrientationsEnum.NORD;
                     break;
-                case Enum.OrientationsEnum.OUEST:
+                case OrientationsEnum.OUEST:
                     ModelRover.Orientation = isRight ? OrientationsEnum.NORD : OrientationsEnum.SUD;
                     break;
             }
