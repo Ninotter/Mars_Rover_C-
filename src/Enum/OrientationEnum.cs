@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Mars_Rover.src.Enum
+﻿namespace Mars_Rover.src.Enum
 {
     public enum OrientationsEnum
     {
-        NORD,
-        SUD,
-        EST,
-        OUEST
+        NORD = 0,
+        EST = 90,
+        SUD = 180,
+        OUEST= 270
     }
 }
