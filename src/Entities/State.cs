@@ -9,11 +9,17 @@ namespace Mars_Rover.src.Entities
 {
     public class State
     {
-        public IStateSender StateModel { get; set; }
-
-        public State(IStateSender sender)
+        public double Horizontal { get; set; }
+        
+        public double Vertical { get; set; }
+        
+        public double RotationAngle { get; set; }
+        
+        public State(double horizontal, double vertical, double rotationAngle)
         {
-            StateModel = sender;
+            Horizontal = horizontal;
+            Vertical = vertical;
+            RotationAngle = rotationAngle;
         }
     }
 }

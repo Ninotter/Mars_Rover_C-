@@ -1,4 +1,5 @@
 ﻿using Mars_Rover.src.Enum;
+using Mars_Rover.src.Interfaces;
 
 namespace Mars_Rover.src.Entities
 {
@@ -35,9 +36,9 @@ namespace Mars_Rover.src.Entities
         #endregion
 
         #region Methods
-        public void SendState()
+        public State SendState()
         {
-            // Envoi de la position et de la rotation
+            return new State(Horizontal, Vertical, rotationAngle);
         }
         #endregion
     }
