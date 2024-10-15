@@ -66,13 +66,13 @@ namespace Mars_Rover.src.Services
                     ModelRover.Orientation = isRight ? OrientationsEnum.EST : OrientationsEnum.OUEST;
                     break;
                 case Enum.OrientationsEnum.SUD:
-                    ModelRover.Orientation = isRight ? Enum.OrientationsEnum.OUEST : OrientationsEnum.EST;
+                    ModelRover.Orientation = isRight ? OrientationsEnum.OUEST : OrientationsEnum.EST;
                     break;
                 case Enum.OrientationsEnum.EST:
-                    ModelRover.Orientation = isRight ? Enum.OrientationsEnum.SUD : Enum.OrientationsEnum.NORD;
+                    ModelRover.Orientation = isRight ? OrientationsEnum.SUD : OrientationsEnum.NORD;
                     break;
                 case Enum.OrientationsEnum.OUEST:
-                    ModelRover.Orientation = isRight ? Enum.OrientationsEnum.NORD : Enum.OrientationsEnum.SUD;
+                    ModelRover.Orientation = isRight ? OrientationsEnum.NORD : OrientationsEnum.SUD;
                     break;
             }
         }
