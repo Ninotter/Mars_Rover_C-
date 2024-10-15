@@ -5,10 +5,10 @@ namespace Mars_Rover.src.Entities;
 
 public abstract class Vehicle : IStateSender
 {
-    public State vehicleState { get; set; }
+    public required State VehicleState { get; set; }
     public OrientationsEnum Orientation { get; set; } = OrientationsEnum.NORD;
     public State SendState()
     {
-        return vehicleState;
+        return VehicleState;
     }
 }

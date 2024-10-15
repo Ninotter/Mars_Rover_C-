@@ -2,11 +2,11 @@
 {
     public class State
     {
-        public double Horizontal { get; set; }
+        public double Horizontal { get; set; } = 0;
         
-        public double Vertical { get; set; }
+        public double Vertical { get; set; } = 0;
         
-        private double rotationAngle;
+        private double rotationAngle = 0;
         public double RotationAngle {
             get { return rotationAngle; }
             set
