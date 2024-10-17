@@ -12,6 +12,7 @@ namespace Mars_Rover.src.Services
         public VehicleService(Rover rover, Planet planet)
         {
             VehicleModel = rover;
+            PlanetModel = planet;
         }
 
         private void CheckLimits()
@@ -19,19 +20,19 @@ namespace Mars_Rover.src.Services
             
             if (VehicleModel.VehicleState.Horizontal < MIN_PLANET_SIZE)
             {
-                VehicleModel.VehicleState.Horizontal = MIN_PLANET_SIZE + -VehicleModel.VehicleState.Horizontal;
+                VehicleModel.VehicleState.Horizontal = MIN_PLANET_SIZE - VehicleModel.VehicleState.Horizontal - 1;
             }
             if (VehicleModel.VehicleState.Vertical < MIN_PLANET_SIZE)
             {
-                VehicleModel.VehicleState.Vertical = MIN_PLANET_SIZE + -VehicleModel.VehicleState.Vertical;
+                VehicleModel.VehicleState.Vertical = MIN_PLANET_SIZE - VehicleModel.VehicleState.Vertical -1;
             }
             if (VehicleModel.VehicleState.Horizontal > PlanetModel.Size)
             {
-                VehicleModel.VehicleState.Horizontal = (VehicleModel.VehicleState.Horizontal - PlanetModel.Size);
+                VehicleModel.VehicleState.Horizontal = (VehicleModel.VehicleState.Horizontal - PlanetModel.Size -1);
             }
             if (VehicleModel.VehicleState.Vertical > PlanetModel.Size)
             {
-                VehicleModel.VehicleState.Vertical = (VehicleModel.VehicleState.Vertical - PlanetModel.Size);
+                VehicleModel.VehicleState.Vertical = (VehicleModel.VehicleState.Vertical - PlanetModel.Size -1);
             }
         }
 
