@@ -25,9 +25,9 @@ namespace Mars_Rover.src.Services
                 case OrientationsEnum.SUD:
                     return isRight ? OrientationsEnum.OUEST : OrientationsEnum.EST;
                 case OrientationsEnum.EST:
-                    return isRight ? OrientationsEnum.NORD : OrientationsEnum.SUD;
-                case OrientationsEnum.OUEST:
                     return isRight ? OrientationsEnum.SUD : OrientationsEnum.NORD;
+                case OrientationsEnum.OUEST:
+                    return isRight ? OrientationsEnum.NORD : OrientationsEnum.SUD;
                 default:
                     throw new Exception("Orientations not found");
             }
