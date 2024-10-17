@@ -13,11 +13,32 @@ namespace Mars_Rover.src.Services
             VehicleModel = rover;
         }
 
+        private void CheckLimits()
+        {
+            if (VehicleModel.VehicleState.Horizontal < 0)
+            {
+                VehicleModel.VehicleState.Horizontal = 0;
+            }
+            if (VehicleModel.VehicleState.Vertical < 0)
+            {
+                VehicleModel.VehicleState.Vertical = 0;
+            }
+            if (VehicleModel.VehicleState.Horizontal > VehicleModel.Planet.Size)
+            {
+                VehicleModel.VehicleState.Horizontal = VehicleModel.Planet.Size;
+            }
+            if (VehicleModel.VehicleState.Vertical > VehicleModel.Planet.Size)
+            {
+                VehicleModel.VehicleState.Vertical = VehicleModel.Planet.Size;
+            }
+        }
+
         public void AvancerNord()
         {
             if(VehicleModel.Orientation == OrientationsEnum.NORD)
             {
                 VehicleModel.VehicleState.Vertical += 1;
+                CheckLimits();
             }
             VehicleModel.SendState();
         }
@@ -27,6 +48,7 @@ namespace Mars_Rover.src.Services
             if(VehicleModel.Orientation == OrientationsEnum.SUD)
             {
                 VehicleModel.VehicleState.Vertical -= 1;
+                CheckLimits();
             }
             VehicleModel.SendState();
         }
@@ -35,6 +57,7 @@ namespace Mars_Rover.src.Services
             if(VehicleModel.Orientation == OrientationsEnum.EST)
             {
                 VehicleModel.VehicleState.Horizontal += 1;
+                CheckLimits();
             }
             VehicleModel.SendState();
         }
@@ -44,6 +67,7 @@ namespace Mars_Rover.src.Services
             if(VehicleModel.Orientation == OrientationsEnum.OUEST)
             {
                 VehicleModel.VehicleState.Horizontal -= 1;
+                CheckLimits();
             }
             VehicleModel.SendState();
         }
@@ -53,6 +77,7 @@ namespace Mars_Rover.src.Services
             if(VehicleModel.Orientation == OrientationsEnum.SUD)
             {
                 VehicleModel.VehicleState.Vertical -= 1;
+                CheckLimits();
             }
             VehicleModel.SendState();
         }
@@ -62,6 +87,7 @@ namespace Mars_Rover.src.Services
             if(VehicleModel.Orientation == OrientationsEnum.NORD)
             {
                 VehicleModel.VehicleState.Vertical += 1;
+                CheckLimits();
             }
             VehicleModel.SendState();
         }
@@ -70,6 +96,7 @@ namespace Mars_Rover.src.Services
             if(VehicleModel.Orientation == OrientationsEnum.OUEST)
             {
                 VehicleModel.VehicleState.Horizontal -= 1;
+                CheckLimits();
             }
             VehicleModel.SendState();
         }
@@ -79,6 +106,7 @@ namespace Mars_Rover.src.Services
             if(VehicleModel.Orientation == OrientationsEnum.EST)
             {
                 VehicleModel.VehicleState.Vertical += 1;
+                CheckLimits();
             }
             VehicleModel.SendState();
         }

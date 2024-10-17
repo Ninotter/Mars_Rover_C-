@@ -2,6 +2,9 @@
 {
     public class Rover : Vehicle
     {
-     
+        public Rover(Planet planet) : base(planet)
+        {
+
+        }
     }
 }

@@ -1,4 +1,5 @@
 using Mars_Rover.src.Entities;
+using Mars_Rover.src.Entities.Planets;
 using Mars_Rover.src.Services;
 
 namespace RoverTest
@@ -8,7 +9,7 @@ namespace RoverTest
         [Test]
         public void RoverNorth_StartsNorthRotateEastThenForward_GoesEast()
         {
-            Rover rover = new() { VehicleState = new State(10, 5, 0) };
+            Rover rover = new(new ToroidalPlanet(60)) { VehicleState = new State(10, 5, 0) };
             VehicleService vehicleService = new(rover);
             vehicleService.RotateRight90Degrees();
             vehicleService.AvancerEst();
