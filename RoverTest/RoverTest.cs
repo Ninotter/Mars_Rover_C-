@@ -6,11 +6,13 @@ namespace RoverTest
     public class RoverTest
     {
         [Test]
-        public void RoverNorth_MoveEast_GoesEast()
+        public void RoverNorth_StartsNorthRotateEastThenForward_GoesEast()
         {
             Rover rover = new() { VehicleState = new State(10, 5, 0) };
             VehicleService vehicleService = new(rover);
-            vehicleService.MoveEast();
+            vehicleService.RotateRight90Degrees();
+            vehicleService.AvancerEst();
+            Assert.AreEqual(11, rover.VehicleState.Horizontal);
         }
     }
 }

@@ -13,13 +13,6 @@ namespace Mars_Rover.src.Services
             VehicleModel = rover;
         }
 
-        public void Move(double x, double y)
-        {
-            VehicleModel.VehicleState.Horizontal = x;
-            VehicleModel.VehicleState.Vertical = y;
-            VehicleModel.SendState();
-        }
-
         public void AvancerNord()
         {
             if(VehicleModel.Orientation == OrientationsEnum.NORD)
