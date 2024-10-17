@@ -43,7 +43,7 @@ namespace Mars_Rover.src.Services
         {
             if(VehicleModel.Orientation == OrientationsEnum.OUEST)
             {
-                VehicleModel.VehicleState.Vertical -= 1;
+                VehicleModel.VehicleState.Horizontal -= 1;
             }
             VehicleModel.SendState();
         }
@@ -113,10 +113,10 @@ namespace Mars_Rover.src.Services
                     VehicleModel.Orientation = isRight ? OrientationsEnum.OUEST : OrientationsEnum.EST;
                     break;
                 case OrientationsEnum.EST:
-                    VehicleModel.Orientation = isRight ? OrientationsEnum.SUD : OrientationsEnum.NORD;
+                    VehicleModel.Orientation = isRight ? OrientationsEnum.NORD : OrientationsEnum.NORD;
                     break;
                 case OrientationsEnum.OUEST:
-                    VehicleModel.Orientation = isRight ? OrientationsEnum.NORD : OrientationsEnum.SUD;
+                    VehicleModel.Orientation = isRight ? OrientationsEnum.SUD : OrientationsEnum.NORD;
                     break;
             }
         }
