@@ -6,30 +6,32 @@ namespace Mars_Rover.src.Services
 {
     public class VehicleService : ICommand
     {
-        protected Vehicle VehicleModel { get; set; }
-
-        public VehicleService(Rover rover)
+        private const double MIN_PLANET_SIZE = 0;
+        protected Vehicle VehicleModel { get; set; } 
+        protected Planet PlanetModel { get; set; }
+        public VehicleService(Rover rover, Planet planet)
         {
             VehicleModel = rover;
         }
 
         private void CheckLimits()
         {
-            if (VehicleModel.VehicleState.Horizontal < 0)
+            
+            if (VehicleModel.VehicleState.Horizontal < MIN_PLANET_SIZE)
             {
-                VehicleModel.VehicleState.Horizontal = 0;
+                VehicleModel.VehicleState.Horizontal = MIN_PLANET_SIZE + -VehicleModel.VehicleState.Horizontal;
             }
-            if (VehicleModel.VehicleState.Vertical < 0)
+            if (VehicleModel.VehicleState.Vertical < MIN_PLANET_SIZE)
             {
-                VehicleModel.VehicleState.Vertical = 0;
+                VehicleModel.VehicleState.Vertical = MIN_PLANET_SIZE + -VehicleModel.VehicleState.Vertical;
             }
-            if (VehicleModel.VehicleState.Horizontal > VehicleModel.Planet.Size)
+            if (VehicleModel.VehicleState.Horizontal > PlanetModel.Size)
             {
-                VehicleModel.VehicleState.Horizontal = VehicleModel.Planet.Size;
+                VehicleModel.VehicleState.Horizontal = (VehicleModel.VehicleState.Horizontal - PlanetModel.Size);
             }
-            if (VehicleModel.VehicleState.Vertical > VehicleModel.Planet.Size)
+            if (VehicleModel.VehicleState.Vertical > PlanetModel.Size)
             {
-                VehicleModel.VehicleState.Vertical = VehicleModel.Planet.Size;
+                VehicleModel.VehicleState.Vertical = (VehicleModel.VehicleState.Vertical - PlanetModel.Size);
             }
         }
 
@@ -141,7 +143,7 @@ namespace Mars_Rover.src.Services
                     VehicleModel.Orientation = isRight ? OrientationsEnum.OUEST : OrientationsEnum.EST;
                     break;
                 case OrientationsEnum.EST:
-                    VehicleModel.Orientation = isRight ? OrientationsEnum.NORD : OrientationsEnum.NORD;
+                    VehicleModel.Orientation = isRight ? OrientationsEnum.NORD : OrientationsEnum.SUD;
                     break;
                 case OrientationsEnum.OUEST:
                     VehicleModel.Orientation = isRight ? OrientationsEnum.SUD : OrientationsEnum.NORD;
