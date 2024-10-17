@@ -1,11 +1,13 @@
-﻿namespace Mars_Rover.src.Interfaces
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Mars_Rover.src.Interfaces
 {
-    public interface ICommand
+    public interface IMouvement
     {
-        void RotateRight90Degrees();
-
-        void RotateLeft90Degrees();
-
         public void AvancerNord();
 
         public void AvancerSud();
