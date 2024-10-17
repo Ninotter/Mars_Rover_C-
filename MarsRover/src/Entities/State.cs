@@ -6,7 +6,6 @@
         
         public double Vertical { get; set; } = 0;
         
-        public double RotationAngle {get; set;} = 0;
         private double rotationAngle = 0;
         public double RotationAngle {
             get { return rotationAngle; }
