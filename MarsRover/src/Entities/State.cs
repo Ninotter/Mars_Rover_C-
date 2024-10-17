@@ -6,9 +6,7 @@
         
         public double Vertical { get; set; } = 0;
         
-<<<<<<< HEAD
         public double RotationAngle {get; set;} = 0;
-=======
         private double rotationAngle = 0;
         public double RotationAngle {
             get { return rotationAngle; }
@@ -28,7 +26,6 @@
                 }
             }
         }
->>>>>>> c5ec924 (Added test, changed solution structure)
         
         public State(double horizontal, double vertical, double rotationAngle)
         {
