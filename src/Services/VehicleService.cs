@@ -20,19 +20,76 @@ namespace Mars_Rover.src.Services
             VehicleModel.SendState();
         }
 
-        public void RotateToMax90Degrees(double angle)
+        public void AvancerNord()
         {
-            if (angle > 90 || angle < -90)
+            if(VehicleModel.Orientation == OrientationsEnum.NORD)
             {
-                throw new Exception("L'angle est supérieur a 90°");
+                VehicleModel.VehicleState.Vertical += 1;
             }
-            else
-            {
-                VehicleModel.VehicleState.RotationAngle += angle;
-            }
-
             VehicleModel.SendState();
         }
+
+        public void AvancerSud()
+        {
+            if(VehicleModel.Orientation == OrientationsEnum.SUD)
+            {
+                VehicleModel.VehicleState.Vertical -= 1;
+            }
+            VehicleModel.SendState();
+        }
+        public void AvancerEst ()
+        {
+            if(VehicleModel.Orientation == OrientationsEnum.EST)
+            {
+                VehicleModel.VehicleState.Horizontal += 1;
+            }
+            VehicleModel.SendState();
+        }
+
+        public void AvancerOuest()
+        {
+            if(VehicleModel.Orientation == OrientationsEnum.OUEST)
+            {
+                VehicleModel.VehicleState.Vertical -= 1;
+            }
+            VehicleModel.SendState();
+        }
+
+        public void ReculerNord()
+        {
+            if(VehicleModel.Orientation == OrientationsEnum.SUD)
+            {
+                VehicleModel.VehicleState.Vertical -= 1;
+            }
+            VehicleModel.SendState();
+        }
+
+        public void ReculerSud()
+        {
+            if(VehicleModel.Orientation == OrientationsEnum.NORD)
+            {
+                VehicleModel.VehicleState.Vertical += 1;
+            }
+            VehicleModel.SendState();
+        }
+        public void ReculerEst ()
+        {
+            if(VehicleModel.Orientation == OrientationsEnum.OUEST)
+            {
+                VehicleModel.VehicleState.Horizontal -= 1;
+            }
+            VehicleModel.SendState();
+        }
+
+        public void ReculerOuest()
+        {
+            if(VehicleModel.Orientation == OrientationsEnum.EST)
+            {
+                VehicleModel.VehicleState.Vertical += 1;
+            }
+            VehicleModel.SendState();
+        }
+
 
         public void RotateRight90Degrees()
         {
