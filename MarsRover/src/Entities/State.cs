@@ -1,36 +1,24 @@
-﻿namespace Mars_Rover.src.Entities
+﻿using Mars_Rover.src.Enum;
+
+namespace Mars_Rover.Entities
 {
     public class State
     {
         public double Horizontal { get; set; } = 0;
-        
+
         public double Vertical { get; set; } = 0;
-        
-        private double rotationAngle = 0;
-        public double RotationAngle {
-            get { return rotationAngle; }
-            set
-            {
-                if (value >= 360)
-                {
-                    rotationAngle = value - 360;
-                }
-                else if (value < 0)
-                {
-                    rotationAngle = 360 + value;
-                }
-                else
-                {
-                    rotationAngle = value;
-                }
-            }
+
+        public OrientationsEnum RoverOrientation { get; set; } = OrientationsEnum.NORD;
+
+        public State()
+        {
         }
         
-        public State(double horizontal, double vertical, double rotationAngle)
+        public State(double horizontal, double vertical, OrientationsEnum orientation = OrientationsEnum.NORD)
         {
             Horizontal = horizontal;
             Vertical = vertical;
-            RotationAngle = rotationAngle;
+            RoverOrientation = orientation;
         }
     }
 }

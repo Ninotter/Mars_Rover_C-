@@ -1,27 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Mars_Rover.Entities;
 
-namespace Mars_Rover.src.Interfaces
+namespace Mars_Rover.Interfaces
 {
-    public interface IMouvement
+    public interface ICommand
     {
-        public void AvancerNord();
-
-        public void AvancerSud();
-
-        public void AvancerEst();
-
-        public void AvancerOuest();
-
-        public void ReculerNord();
-
-        public void ReculerSud();
-
-        public void ReculerEst();
-
-        public void ReculerOuest();
+        public void RotateToRightSide();
+        public void RotateToLeftSide();
+        public void Avancer();
+        public void Reculer();
+        State SendState();
     }
 }
