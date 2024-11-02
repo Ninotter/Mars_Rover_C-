@@ -1,10 +1,11 @@
 ﻿using Mars_Rover.src.Enum;
+using Mars_Rover.src.Interfaces;
 
 namespace Mars_Rover.Tools
 {
-    internal class MovementCalculator
+    public class MovementCalculator : IMovementCalculator
     {
-        public static (double x, double y) Forward(OrientationsEnum direction, double x, double y)
+        public (double x, double y) Forward(OrientationsEnum direction, double x, double y)
         {
             switch (direction)
             {
@@ -25,7 +26,7 @@ namespace Mars_Rover.Tools
             return (x, y);
         }
 
-        public static (double x, double y) Backward(OrientationsEnum direction, double x, double y)
+        public (double x, double y) Backward(OrientationsEnum direction, double x, double y)
         {
             switch (direction)
             {
@@ -46,7 +47,7 @@ namespace Mars_Rover.Tools
             return (x, y);
         }
 
-        public static OrientationsEnum RotateToRightSide(OrientationsEnum currentOrientation)
+        public OrientationsEnum RotateToRightSide(OrientationsEnum currentOrientation)
         {
             switch (currentOrientation)
             {
@@ -63,7 +64,7 @@ namespace Mars_Rover.Tools
             }
         }
 
-        public static OrientationsEnum RotateToLeftSide(OrientationsEnum currentOrientation)
+        public OrientationsEnum RotateToLeftSide(OrientationsEnum currentOrientation)
         {
             switch (currentOrientation)
             {

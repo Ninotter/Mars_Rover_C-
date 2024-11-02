@@ -1,47 +1,67 @@
 ﻿using Mars_Rover.Entities;
+using Mars_Rover.src.Entities;
 using Mars_Rover.src.Enum;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Mars_Rover.src.Interfaces;
+using Mars_Rover.Tools;
 
 namespace RoverTest
 {
-    internal static class RoverBuilder
+    internal class RoverBuilder
     {
-        public static Rover CreateBuilder()
+        private State state = new State();
+        private Planet planet = new InfinitePlanet();
+        private IMovementCalculator movementCalculator = new MovementCalculator();
+
+        public static RoverBuilder CreateBuilder()
         {
-            return new Rover();
+            return new RoverBuilder();
         }
 
-        public static Rover WithPlanetSize(this Rover rover, double size)
+        public RoverBuilder AddPlanet(Planet planet)
         {
-            rover.Planet = new Planet(size);
-            return rover;
+            this.planet = planet;
+            return this;
         }
 
-        public static Rover WithState(this Rover rover, double horizontal, double vertical, OrientationsEnum orientation)
+        public RoverBuilder AddTorroidalPlanet(double xy)
         {
-            rover.VehicleState = new State(horizontal, vertical, orientation);
-            return rover;
+            this.planet = new TorroidalPlanet(xy, xy);
+            return this;
         }
 
-        public static Rover WithState(this Rover rover, State state)
+        public RoverBuilder AddTorroidalPlanet(double x, double y)
         {
-            rover.VehicleState = state;
-            return rover;
+            this.planet = new TorroidalPlanet(x, y);
+            return this;
         }
 
-        public static Rover WithPlanet(this Rover rover, Planet planet)
+        public RoverBuilder AddInfinitePlanet()
         {
-            rover.Planet = planet;
-            return rover;
+            this.planet = new InfinitePlanet();
+            return this;
         }
 
-        public static Rover Build(this Rover rover)
+        public RoverBuilder AddState(State state)
         {
-            return rover;
+            this.state = state;
+            return this;
+        }
+
+        public RoverBuilder AddState(double horizontal, double vertical, OrientationsEnum orientation = OrientationsEnum.NORD)
+        {
+            this.state = new State(horizontal, vertical, orientation);
+            return this;
+        }
+
+        public RoverBuilder AddMovementCalculator(IMovementCalculator movementCalculator)
+        {
+            this.movementCalculator = movementCalculator;
+            return this;
+        }
+
+        public Rover Build()
+        {
+            return new Rover(state, movementCalculator, planet);
         }
     }
 }
