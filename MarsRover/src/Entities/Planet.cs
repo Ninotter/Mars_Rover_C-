@@ -1,36 +1,33 @@
 ﻿namespace Mars_Rover.Entities
 {
-    public class Planet
+    public abstract class Planet
     {
-        private const double MIN_PLANET_SIZE = 0;
-
-        public Planet(double size = Double.PositiveInfinity)
-        {
-            Size = size;
-        }
-
-        public double Size { get; }
+        private const double MIN_PLANET_SIZE_XY = 0;
+        protected double MinX { get; set; } = MIN_PLANET_SIZE_XY;
+        protected double MinY { get; set; } = MIN_PLANET_SIZE_XY;
+        protected double MaxX { get; set; }
+        protected double MaxY { get; set; }
 
         public (double x, double y) CheckLimits(double x, double y)
         {
-            if (x < MIN_PLANET_SIZE)
+            if (x < MIN_PLANET_SIZE_XY)
             {
-                x = MIN_PLANET_SIZE - x - 1;
+                x = MIN_PLANET_SIZE_XY - x - 1;
             }
 
-            if (y < MIN_PLANET_SIZE)
+            if (y < MIN_PLANET_SIZE_XY)
             {
-                y = MIN_PLANET_SIZE - y - 1;
+                y = MIN_PLANET_SIZE_XY - y - 1;
             }
 
-            if (x > this.Size)
+            if (x > this.MaxX)
             {
-                x = (x - this.Size - 1);
+                x = (x - this.MaxX - 1);
             }
 
-            if (y > this.Size)
+            if (y > this.MaxY)
             {
-                y = (y - this.Size - 1);
+                y = (y - this.MaxY - 1);
             }
 
             return (x, y);

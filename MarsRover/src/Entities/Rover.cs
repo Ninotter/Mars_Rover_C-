@@ -1,5 +1,5 @@
 ﻿using Mars_Rover.Interfaces;
-using Mars_Rover.Tools;
+using Mars_Rover.src.Interfaces;
 
 namespace Mars_Rover.Entities
 {
@@ -7,23 +7,20 @@ namespace Mars_Rover.Entities
     {
         public State VehicleState { get; set; }
         public Planet Planet { get; set; }
+        private IMovementCalculator movementCalculator;
 
-        public Rover()
+        public Rover(IMovementCalculator movementCalculator, Planet planet)
         {
             VehicleState = new State();
-            Planet = new Planet();
+            Planet = planet;
+            this.movementCalculator = movementCalculator;
         }
 
-        public Rover(State vehicleState)
-        {
-            VehicleState = vehicleState;
-            Planet = new Planet();
-        }
-
-        public Rover(State vehicleState, Planet planet)
+        public Rover(State vehicleState, IMovementCalculator movementCalculator, Planet planet)
         {
             VehicleState = vehicleState;
             Planet = planet;
+            this.movementCalculator = movementCalculator;
         }
 
         public State SendState()
@@ -33,7 +30,7 @@ namespace Mars_Rover.Entities
 
         public void Avancer()
         {
-            (double x, double y) = MovementCalculator.Forward(VehicleState.RoverOrientation, VehicleState.Horizontal, VehicleState.Vertical);
+            (double x, double y) = movementCalculator.Forward(VehicleState.RoverOrientation, VehicleState.Horizontal, VehicleState.Vertical);
             (x, y) = Planet.CheckLimits(x, y);
             VehicleState.Horizontal = x;
             VehicleState.Vertical = y;
@@ -41,7 +38,7 @@ namespace Mars_Rover.Entities
 
         public void Reculer()
         {
-            (double x, double y) = MovementCalculator.Backward(VehicleState.RoverOrientation, VehicleState.Horizontal, VehicleState.Vertical);
+            (double x, double y) = movementCalculator.Backward(VehicleState.RoverOrientation, VehicleState.Horizontal, VehicleState.Vertical);
             (x, y) = Planet.CheckLimits(x, y);
             VehicleState.Horizontal = x;
             VehicleState.Vertical = y;
@@ -49,12 +46,12 @@ namespace Mars_Rover.Entities
 
         public void RotateToRightSide()
         {
-            this.VehicleState.RoverOrientation = MovementCalculator.RotateToRightSide(this.VehicleState.RoverOrientation);
+            this.VehicleState.RoverOrientation = movementCalculator.RotateToRightSide(this.VehicleState.RoverOrientation);
         }
 
         public void RotateToLeftSide()
         {
-            this.VehicleState.RoverOrientation = MovementCalculator.RotateToLeftSide(this.VehicleState.RoverOrientation);
+            this.VehicleState.RoverOrientation = movementCalculator.RotateToLeftSide(this.VehicleState.RoverOrientation);
         }
     }
 }

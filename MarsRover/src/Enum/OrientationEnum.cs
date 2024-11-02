@@ -5,6 +5,6 @@
         NORD = 0,
         EST = 90,
         SUD = 180,
-        OUEST= 270
+        OUEST = 270
     }
 }

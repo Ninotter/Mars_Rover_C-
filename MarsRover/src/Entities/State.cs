@@ -13,7 +13,7 @@ namespace Mars_Rover.Entities
         public State()
         {
         }
-        
+
         public State(double horizontal, double vertical, OrientationsEnum orientation = OrientationsEnum.NORD)
         {
             Horizontal = horizontal;
