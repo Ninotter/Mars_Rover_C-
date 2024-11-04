@@ -1,21 +1,16 @@
-﻿using Mars_Rover.src.Enum;
-
-namespace Mars_Rover.Entities
+﻿namespace Mars_Rover.Entities
 {
     public class State
     {
-        Position Position { get; }
-
-        public OrientationsEnum RoverOrientation { get; } = OrientationsEnum.NORD;
+        public Position Position { get; } = new Position();
 
         public State()
         {
         }
 
-        public State(double horizontal, double vertical, OrientationsEnum orientation = OrientationsEnum.NORD)
+        public State(double horizontal, double vertical, string orientation = Mars_Rover.Entities.Position.NORD)
         {
-            Position = new Position(horizontal, vertical);
-            RoverOrientation = orientation;
+            Position = new Position(orientation, horizontal, vertical);
         }
     }
 }
