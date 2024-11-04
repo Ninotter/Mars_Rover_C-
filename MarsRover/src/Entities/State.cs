@@ -8,7 +8,7 @@ namespace Mars_Rover.Entities
 
         public double Vertical { get; } = 0;
 
-        public OrientationsEnum RoverOrientation { get; set; } = OrientationsEnum.NORD;
+        public OrientationsEnum RoverOrientation { get; } = OrientationsEnum.NORD;
 
         public State()
         {
