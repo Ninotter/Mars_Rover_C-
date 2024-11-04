@@ -1,7 +1,5 @@
 ﻿using Mars_Rover.Entities;
 using Mars_Rover.Interfaces;
-using Mars_Rover.src.Entities;
-using Mars_Rover.src.Enum;
 using Mars_Rover.Tools;
 
 namespace RoverTest
@@ -47,7 +45,7 @@ namespace RoverTest
             return this;
         }
 
-        public RoverBuilder AddState(double horizontal, double vertical, OrientationsEnum orientation = OrientationsEnum.NORD)
+        public RoverBuilder AddState(double horizontal, double vertical, string orientation = Position.NORD)
         {
             this.state = new State(horizontal, vertical, orientation);
             return this;
