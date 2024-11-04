@@ -4,10 +4,9 @@ namespace Mars_Rover.Interfaces
 {
     public interface ICommand
     {
-        public void RotateToRightSide();
-        public void RotateToLeftSide();
-        public void Avancer();
-        public void Reculer();
-        State SendState();
+        public State RotateToRightSide();
+        public State RotateToLeftSide();
+        public State Avancer();
+        public State Reculer();
     }
 }

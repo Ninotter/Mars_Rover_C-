@@ -1,4 +1,5 @@
 ﻿using Mars_Rover.Interfaces;
+using Mars_Rover.src.Enum;
 using Mars_Rover.src.Interfaces;
 
 namespace Mars_Rover.Entities
@@ -23,35 +24,34 @@ namespace Mars_Rover.Entities
             this.movementCalculator = movementCalculator;
         }
 
-        public State SendState()
-        {
-            return VehicleState;
-        }
-
-        public void Avancer()
+        public State Avancer()
         {
             (double x, double y) = movementCalculator.Forward(VehicleState.RoverOrientation, VehicleState.Horizontal, VehicleState.Vertical);
             (x, y) = Planet.CheckLimits(x, y);
-            VehicleState.Horizontal = x;
-            VehicleState.Vertical = y;
+            VehicleState = new State(x, y, VehicleState.RoverOrientation);
+            return VehicleState;
         }
 
-        public void Reculer()
+        public State Reculer()
         {
             (double x, double y) = movementCalculator.Backward(VehicleState.RoverOrientation, VehicleState.Horizontal, VehicleState.Vertical);
             (x, y) = Planet.CheckLimits(x, y);
-            VehicleState.Horizontal = x;
-            VehicleState.Vertical = y;
+            VehicleState = new State(x, y, VehicleState.RoverOrientation);
+            return VehicleState;
         }
 
-        public void RotateToRightSide()
+        public State RotateToRightSide()
         {
-            this.VehicleState.RoverOrientation = movementCalculator.RotateToRightSide(this.VehicleState.RoverOrientation);
+            OrientationsEnum newOrientation = movementCalculator.RotateToRightSide(this.VehicleState.RoverOrientation);
+            VehicleState = new State(VehicleState.Horizontal, VehicleState.Vertical, newOrientation);
+            return VehicleState;
         }
 
-        public void RotateToLeftSide()
+        public State RotateToLeftSide()
         {
-            this.VehicleState.RoverOrientation = movementCalculator.RotateToLeftSide(this.VehicleState.RoverOrientation);
+            OrientationsEnum newOrientation = movementCalculator.RotateToLeftSide(this.VehicleState.RoverOrientation);
+            VehicleState = new State(VehicleState.Horizontal, VehicleState.Vertical, newOrientation);
+            return VehicleState;
         }
     }
 }
