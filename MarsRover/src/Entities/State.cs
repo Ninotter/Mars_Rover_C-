@@ -4,9 +4,7 @@ namespace Mars_Rover.Entities
 {
     public class State
     {
-        public double Horizontal { get; } = 0;
-
-        public double Vertical { get; } = 0;
+        Position Position { get; }
 
         public OrientationsEnum RoverOrientation { get; } = OrientationsEnum.NORD;
 
@@ -16,8 +14,7 @@ namespace Mars_Rover.Entities
 
         public State(double horizontal, double vertical, OrientationsEnum orientation = OrientationsEnum.NORD)
         {
-            Horizontal = horizontal;
-            Vertical = vertical;
+            Position = new Position(horizontal, vertical);
             RoverOrientation = orientation;
         }
     }
