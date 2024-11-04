@@ -1,5 +1,5 @@
 ﻿using Mars_Rover.Entities;
-namespace Mars_Rover.src.Interfaces
+namespace Mars_Rover.Interfaces
 {
     public interface IMovementCalculator
     {

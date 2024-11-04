@@ -1,5 +1,4 @@
 ﻿using Mars_Rover.Interfaces;
-using Mars_Rover.src.Interfaces;
 
 namespace Mars_Rover.Entities
 {

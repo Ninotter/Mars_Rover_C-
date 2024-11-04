@@ -1,13 +1,11 @@
-﻿using Mars_Rover.Entities;
-
-namespace Mars_Rover.src.Entities
+﻿namespace Mars_Rover.Entities
 {
     public class TorroidalPlanet : Planet
     {
         public TorroidalPlanet(double maxX, double maxY)
         {
-            this.MaxX = maxX;
-            this.MaxY = maxY;
+            MaxX = maxX;
+            MaxY = maxY;
         }
     }
 }

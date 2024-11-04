@@ -1,5 +1,5 @@
 ﻿using Mars_Rover.Entities;
-using Mars_Rover.src.Interfaces;
+using Mars_Rover.Interfaces;
 
 namespace Mars_Rover.Tools
 {
