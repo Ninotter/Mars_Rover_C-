@@ -1,10 +1,15 @@
-﻿namespace MissionControl
+﻿using MissionControl.Server;
+
+namespace MissionControl
 {
     internal class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            // Initialize and start the server on a specified port
+            int port = 8080;
+            SocketServer server = new SocketServer(port);
+            await server.StartAsync();
         }
     }
 }
