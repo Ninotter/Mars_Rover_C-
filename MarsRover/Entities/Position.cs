@@ -2,12 +2,12 @@
 {
     public class Position
     {
-        public const string NORD = "NORD";
-        public const string EST = "EST";
-        public const string SUD = "SUD";
-        public const string OUEST = "OUEST";
+        public const string NORTH = "NORTH";
+        public const string EAST = "EAST";
+        public const string SOUTH = "SOUTH";
+        public const string WEST = "WEST";
 
-        public string Orientation { get; } = NORD;
+        public string Orientation { get; } = NORTH;
         public double Horizontal { get; } = 0;
 
         public double Vertical { get; } = 0;
@@ -22,35 +22,35 @@
             Vertical = vertical;
         }
 
-        public Position RotationHoraire()
+        public Position ClockwiseRotation()
         {
             switch (Orientation)
             {
-                case NORD:
-                    return new Position(EST, Horizontal, Vertical);
-                case EST:
-                    return new Position(SUD, Horizontal, Vertical);
-                case SUD:
-                    return new Position(OUEST, Horizontal, Vertical);
-                case OUEST:
-                    return new Position(NORD, Horizontal, Vertical);
+                case NORTH:
+                    return new Position(EAST, Horizontal, Vertical);
+                case EAST:
+                    return new Position(SOUTH, Horizontal, Vertical);
+                case SOUTH:
+                    return new Position(WEST, Horizontal, Vertical);
+                case WEST:
+                    return new Position(NORTH, Horizontal, Vertical);
                 default:
                     return new Position(Orientation, Horizontal, Vertical);
             }
         }
 
-        public Position RotationAntiHoraire()
+        public Position CounterclockwiseRotation()
         {
             switch (Orientation)
             {
-                case NORD:
-                    return new Position(OUEST, Horizontal, Vertical);
-                case OUEST:
-                    return new Position(SUD, Horizontal, Vertical);
-                case SUD:
-                    return new Position(EST, Horizontal, Vertical);
-                case EST:
-                    return new Position(NORD, Horizontal, Vertical);
+                case NORTH:
+                    return new Position(WEST, Horizontal, Vertical);
+                case WEST:
+                    return new Position(SOUTH, Horizontal, Vertical);
+                case SOUTH:
+                    return new Position(EAST, Horizontal, Vertical);
+                case EAST:
+                    return new Position(NORTH, Horizontal, Vertical);
                 default:
                     return new Position(Orientation, Horizontal, Vertical);
             }

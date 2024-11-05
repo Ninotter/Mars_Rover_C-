@@ -8,7 +8,7 @@
         {
         }
 
-        public State(double horizontal, double vertical, string orientation = Mars_Rover.Entities.Position.NORD)
+        public State(double horizontal, double vertical, string orientation = Mars_Rover.Entities.Position.NORTH)
         {
             Position = new Position(orientation, horizontal, vertical);
         }

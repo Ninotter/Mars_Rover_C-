@@ -45,7 +45,7 @@ namespace RoverTest
             return this;
         }
 
-        public RoverBuilder AddState(double horizontal, double vertical, string orientation = Position.NORD)
+        public RoverBuilder AddState(double horizontal, double vertical, string orientation = Position.NORTH)
         {
             this.state = new State(horizontal, vertical, orientation);
             return this;

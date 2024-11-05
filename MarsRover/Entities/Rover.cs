@@ -22,7 +22,7 @@ namespace Mars_Rover.Entities
             this.movementCalculator = movementCalculator;
         }
 
-        public State Avancer()
+        public State GoForward()
         {
             Position pos = movementCalculator.Forward(VehicleState.Position);
             var (x, y) = Planet.CheckLimits(pos.Horizontal, pos.Vertical);
@@ -30,7 +30,7 @@ namespace Mars_Rover.Entities
             return VehicleState;
         }
 
-        public State Reculer()
+        public State GoBackward()
         {
             Position pos = movementCalculator.Backward(VehicleState.Position);
             var (x, y) = Planet.CheckLimits(pos.Horizontal, pos.Vertical);

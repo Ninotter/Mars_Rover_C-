@@ -11,16 +11,16 @@ namespace Mars_Rover.Tools
             double y = currentPosition.Vertical;
             switch (currentPosition.Orientation)
             {
-                case Position.NORD:
+                case Position.NORTH:
                     y += 1;
                     break;
-                case Position.EST:
+                case Position.EAST:
                     x += 1;
                     break;
-                case Position.SUD:
+                case Position.SOUTH:
                     y -= 1;
                     break;
-                case Position.OUEST:
+                case Position.WEST:
                     x -= 1;
                     break;
             }
@@ -34,16 +34,16 @@ namespace Mars_Rover.Tools
             double y = currentPosition.Vertical;
             switch (currentPosition.Orientation)
             {
-                case Position.NORD:
+                case Position.NORTH:
                     y -= 1;
                     break;
-                case Position.EST:
+                case Position.EAST:
                     x -= 1;
                     break;
-                case Position.SUD:
+                case Position.SOUTH:
                     y += 1;
                     break;
-                case Position.OUEST:
+                case Position.WEST:
                     x += 1;
                     break;
             }
@@ -53,12 +53,12 @@ namespace Mars_Rover.Tools
 
         public Position RotateToRightSide(Position currentPosition)
         {
-            return currentPosition.RotationHoraire();
+            return currentPosition.ClockwiseRotation();
         }
 
         public Position RotateToLeftSide(Position currentPosition)
         {
-            return currentPosition.RotationAntiHoraire();
+            return currentPosition.CounterclockwiseRotation();
         }
     }
 }

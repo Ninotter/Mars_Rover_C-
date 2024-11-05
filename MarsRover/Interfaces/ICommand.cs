@@ -6,7 +6,7 @@ namespace Mars_Rover.Interfaces
     {
         public State RotateToRightSide();
         public State RotateToLeftSide();
-        public State Avancer();
-        public State Reculer();
+        public State GoForward();
+        public State GoBackward();
     }
 }
