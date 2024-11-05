@@ -12,12 +12,12 @@
         {
             if (x < MIN_PLANET_SIZE_XY)
             {
-                x = MIN_PLANET_SIZE_XY - x - 1;
+                x = MaxX - x - 1;
             }
 
             if (y < MIN_PLANET_SIZE_XY)
             {
-                y = MIN_PLANET_SIZE_XY - y - 1;
+                y = MaxY - y - 1;
             }
 
             if (x > this.MaxX)
