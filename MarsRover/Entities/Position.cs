@@ -2,7 +2,7 @@
 {
     public class Position
     {
-        public const string NORTH = "NORTH";
+        public const string NORTH = "NORD";
         public const string EAST = "EAST";
         public const string SOUTH = "SOUTH";
         public const string WEST = "WEST";
