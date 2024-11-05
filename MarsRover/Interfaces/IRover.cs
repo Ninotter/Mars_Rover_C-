@@ -2,7 +2,7 @@
 
 namespace Mars_Rover.Interfaces
 {
-    public interface ICommand
+    public interface IRover
     {
         public State RotateToRightSide();
         public State RotateToLeftSide();

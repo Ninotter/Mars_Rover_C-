@@ -2,7 +2,7 @@
 
 namespace Mars_Rover.Entities
 {
-    public class Rover : ICommand
+    public class Rover : IRover
     {
         public State VehicleState { get; set; }
         public Planet Planet { get; set; }
