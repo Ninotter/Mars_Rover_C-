@@ -6,49 +6,44 @@ namespace Mars_Rover.Entities
     {
         public State VehicleState { get; set; }
         public Planet Planet { get; set; }
-        private IMovementCalculator movementCalculator;
 
-        public Rover(IMovementCalculator movementCalculator, Planet planet)
+        public Rover(Planet planet)
         {
             VehicleState = new State();
             Planet = planet;
-            this.movementCalculator = movementCalculator;
         }
 
-        public Rover(State vehicleState, IMovementCalculator movementCalculator, Planet planet)
+        public Rover(State vehicleState, Planet planet)
         {
             VehicleState = vehicleState;
             Planet = planet;
-            this.movementCalculator = movementCalculator;
         }
 
         public State GoForward()
         {
-            Position pos = movementCalculator.Forward(VehicleState.Position);
-            var (x, y) = Planet.CheckLimits(pos.Horizontal, pos.Vertical);
-            VehicleState = new State(x, y, pos.Orientation);
+            State newState = VehicleState.Forward();
+            var (x, y) = Planet.CheckLimits(newState.Horizontal, newState.Vertical);
+            VehicleState = new State(newState.Orientation, x, y);
             return VehicleState;
         }
 
         public State GoBackward()
         {
-            Position pos = movementCalculator.Backward(VehicleState.Position);
-            var (x, y) = Planet.CheckLimits(pos.Horizontal, pos.Vertical);
-            VehicleState = new State(x, y, pos.Orientation);
+            State newState = VehicleState.Backward();
+            var (x, y) = Planet.CheckLimits(newState.Horizontal, newState.Vertical);
+            VehicleState = new State(newState.Orientation, x, y);
             return VehicleState;
         }
 
         public State RotateToRightSide()
         {
-            Position newPosition = movementCalculator.RotateToRightSide(VehicleState.Position);
-            VehicleState = new State(newPosition.Horizontal, newPosition.Vertical, newPosition.Orientation);
+            VehicleState = VehicleState.ClockwiseRotation();
             return VehicleState;
         }
 
         public State RotateToLeftSide()
         {
-            Position newPosition = movementCalculator.RotateToLeftSide(VehicleState.Position);
-            VehicleState = new State(newPosition.Horizontal, newPosition.Vertical, newPosition.Orientation);
+            VehicleState = VehicleState.CounterclockwiseRotation();
             return VehicleState;
         }
     }

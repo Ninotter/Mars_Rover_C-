@@ -1,6 +1,4 @@
 ﻿using Mars_Rover.Entities;
-using Mars_Rover.Interfaces;
-using Mars_Rover.Tools;
 
 namespace RoverTest
 {
@@ -8,7 +6,6 @@ namespace RoverTest
     {
         private State state = new State();
         private Planet planet = new InfinitePlanet();
-        private IMovementCalculator movementCalculator = new MovementCalculator();
 
         public static RoverBuilder CreateBuilder()
         {
@@ -45,21 +42,15 @@ namespace RoverTest
             return this;
         }
 
-        public RoverBuilder AddState(double horizontal, double vertical, string orientation = Position.NORTH)
+        public RoverBuilder AddState(double horizontal, double vertical, string orientation = State.NORTH)
         {
-            this.state = new State(horizontal, vertical, orientation);
-            return this;
-        }
-
-        public RoverBuilder AddMovementCalculator(IMovementCalculator movementCalculator)
-        {
-            this.movementCalculator = movementCalculator;
+            this.state = new State(orientation, horizontal, vertical);
             return this;
         }
 
         public Rover Build()
         {
-            return new Rover(state, movementCalculator, planet);
+            return new Rover(state, planet);
         }
     }
 }
