@@ -49,5 +49,15 @@ namespace RoverTest
             rover.GoForward();
             Assert.AreEqual(1, rover.VehicleState.Horizontal);
         }
+        
+        [Test]
+        public void RoverGoBackwardOnSmallPlanetFromNorthOrientation()
+        {
+            Rover rover = RoverBuilder.CreateBuilder().AddState(0, 0, State.NORTH).AddTorroidalPlanet(10).Build();
+            rover.GoBackward();
+            Assert.AreEqual(10, rover.VehicleState.Vertical);
+        }
+        
     }
+    
 }
