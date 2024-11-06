@@ -5,6 +5,7 @@ using System.Net.Sockets;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using MissionControl.Service;
 
 namespace MissionControl.Server
 {
@@ -12,6 +13,8 @@ namespace MissionControl.Server
     {
         private readonly int _port;
         private readonly TcpListener _listener;
+
+        private readonly CommandInterpreterService _commandInterpreter = new CommandInterpreterService();
 
         public SocketServer(int port)
         {
@@ -28,6 +31,8 @@ namespace MissionControl.Server
             while (true)
             {
                 TcpClient client = await _listener.AcceptTcpClientAsync();
+                ClientManager.Instance.AddClient(client);
+
                 Console.WriteLine("Client connected.");
                 _ = HandleClientAsync(client); // Handle each client asynchronously
             }
@@ -38,19 +43,8 @@ namespace MissionControl.Server
         {
             using (client)
             {
-                NetworkStream stream = client.GetStream();
-
-                // Read data sent by the client
-                byte[] buffer = new byte[1024];
-                int bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length);
-                string clientMessage = Encoding.UTF8.GetString(buffer, 0, bytesRead);
-                Console.WriteLine($"Received message from client: {clientMessage}");
-
-                // Respond to the client
-                string response = Console.ReadLine() ?? string.Empty;
-                byte[] responseBytes = Encoding.UTF8.GetBytes(response);
-                await stream.WriteAsync(responseBytes, 0, responseBytes.Length);
-                Console.WriteLine("Response sent to client.");
+                _commandInterpreter.CurrentClient = client;
+                await _commandInterpreter.Send(Console.ReadLine() ?? "NULL");
             }
         }
     }
