@@ -12,4 +12,9 @@
     <None Remove="tests\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Communication\Communication.csproj" />
+    <ProjectReference Include="..\Topology\Topology.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,6 +1,6 @@
-﻿namespace Mars_Rover.Entities
+﻿namespace Topology.Planet
 {
-    public class TorroidalPlanet : Planet
+    internal class TorroidalPlanet : Planet
     {
         public TorroidalPlanet(double maxX, double maxY)
         {
