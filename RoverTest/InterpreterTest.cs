@@ -15,7 +15,7 @@ public class InterpreterTest
     [Test]
     public void MakeRoverGoForwardFromDefaultNorthPosition_OnInfinitPlanet()
     {
-        Interpreter.CreateRover(new InfinitePlanet());
+        Interpreter.CreateRover(new TorroidalPlanet(10, 10));
         Interpreter.Send(Interpreter.FORWARD);
         Assert.That(Interpreter.GetRoverState().Vertical, Is.EqualTo(1));
     }

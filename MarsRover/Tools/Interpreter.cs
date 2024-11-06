@@ -37,6 +37,8 @@ public static class Interpreter
         }
         return _rover;
     }
+    
+    public static Rover GetRover() => _rover;
 
     public static State GetRoverState()
     {
