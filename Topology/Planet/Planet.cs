@@ -1,4 +1,4 @@
-﻿namespace Mars_Rover.Entities
+﻿namespace Topology.Planet
 {
     public abstract class Planet
     {

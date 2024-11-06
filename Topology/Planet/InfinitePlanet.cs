@@ -1,6 +1,6 @@
-﻿namespace Mars_Rover.Entities
+﻿namespace Topology.Planet
 {
-    public class InfinitePlanet : Planet
+    internal class InfinitePlanet : Planet
     {
         public InfinitePlanet()
         {

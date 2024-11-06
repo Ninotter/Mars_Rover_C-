@@ -12,4 +12,8 @@
     <None Remove="tests\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Topology\Topology.csproj" />
+  </ItemGroup>
+
 </Project>
