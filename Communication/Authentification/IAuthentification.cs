@@ -2,7 +2,7 @@
 {
     public interface IAuthentification
     {
-        TokenAuthentication CreateToken(TokenAuthenticationBuilder builder);
+        TokenAuthentication CreateToken(CredentialsInfo credentials);
 
         AuthenticationResponse VerifyToken(TokenAuthentication token);
     }

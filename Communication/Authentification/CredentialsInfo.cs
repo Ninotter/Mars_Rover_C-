@@ -1,6 +1,6 @@
 ﻿namespace Communication.Authentification
 {
-    public class TokenAuthenticationBuilder
+    public class CredentialsInfo
     {
     }
 }
