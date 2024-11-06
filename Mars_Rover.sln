@@ -11,6 +11,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Communication", "Communicat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Topology", "Topology\Topology.csproj", "{32FDF017-68D1-4E13-BD13-63A027912B74}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mars_Rover.MissionControl", "MissionControl\Mars_Rover.MissionControl.csproj", "{8B555CA7-A85E-4E59-AEE3-496E640E9DF0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mars_Rover.Core", "Mars_Rover_Core\Mars_Rover.Core.csproj", "{D8F899AD-4C4C-4D09-9A94-5B3859696DC1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +29,7 @@ Global
 		{8AD33288-1FD2-4E60-B4FF-343B903D78FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8AD33288-1FD2-4E60-B4FF-343B903D78FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8AD33288-1FD2-4E60-B4FF-343B903D78FC}.Release|Any CPU.Build.0 = Release|Any CPU
+<<<<<<< HEAD
 		{AC5DD3F5-97FA-4702-9873-E141BC9CF6C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AC5DD3F5-97FA-4702-9873-E141BC9CF6C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC5DD3F5-97FA-4702-9873-E141BC9CF6C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -33,6 +38,16 @@ Global
 		{32FDF017-68D1-4E13-BD13-63A027912B74}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{32FDF017-68D1-4E13-BD13-63A027912B74}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{32FDF017-68D1-4E13-BD13-63A027912B74}.Release|Any CPU.Build.0 = Release|Any CPU
+=======
+		{8B555CA7-A85E-4E59-AEE3-496E640E9DF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B555CA7-A85E-4E59-AEE3-496E640E9DF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B555CA7-A85E-4E59-AEE3-496E640E9DF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B555CA7-A85E-4E59-AEE3-496E640E9DF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8F899AD-4C4C-4D09-9A94-5B3859696DC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8F899AD-4C4C-4D09-9A94-5B3859696DC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8F899AD-4C4C-4D09-9A94-5B3859696DC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8F899AD-4C4C-4D09-9A94-5B3859696DC1}.Release|Any CPU.Build.0 = Release|Any CPU
+>>>>>>> add-mission-control
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
