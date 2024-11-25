@@ -1,4 +1,4 @@
-﻿using MissionControl.Server;
+﻿using Mars_Rover.MissionControl;
 
 namespace MissionControl
 {
@@ -6,10 +6,24 @@ namespace MissionControl
     {
         static async Task Main(string[] args)
         {
-            // Initialize and start the server on a specified port
-            int port = 8080;
-            SocketServer server = new SocketServer(port);
-            await server.StartAsync();
+            var comm = new MissionControlCommunication();
+
+            await comm.ConnectAsync("127.0.0.1", 8080);
+
+            bool isAlive = true;
+
+            Console.WriteLine("Envoyer des commandes au rover");
+
+            while (isAlive) {
+                string action = Console.ReadLine() ?? "null";
+                await comm.SendCommandAsync(action);
+
+                if (action.Equals("exit"))
+                {
+                    isAlive = false;
+                    await comm.DisconnectAsync();
+                }
+            }
         }
     }
 }
