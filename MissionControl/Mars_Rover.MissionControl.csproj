@@ -8,7 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Mars_Rover_Core\Mars_Rover.Core.csproj" />
+    <ProjectReference Include="..\Communication\Communication.csproj" />
+	<ProjectReference Include="..\Mars_Rover_Core\Mars_Rover.Core.csproj" />
   </ItemGroup>
 
 </Project>
