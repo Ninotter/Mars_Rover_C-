@@ -1,6 +1,6 @@
 ﻿namespace Topology.Planet
 {
-    internal class InfinitePlanet : Planet
+    public class InfinitePlanet : Planet
     {
         public InfinitePlanet()
         {

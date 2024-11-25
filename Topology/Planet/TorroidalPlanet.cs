@@ -1,6 +1,6 @@
 ﻿namespace Topology.Planet
 {
-    internal class TorroidalPlanet : Planet
+    public class TorroidalPlanet : Planet
     {
         public TorroidalPlanet(double maxX, double maxY)
         {
