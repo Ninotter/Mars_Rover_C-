@@ -63,16 +63,16 @@
             double y = Vertical;
             switch (Orientation)
             {
-                case State.NORTH:
+                case NORTH:
                     y += 1;
                     break;
-                case State.EAST:
+                case EAST:
                     x += 1;
                     break;
-                case State.SOUTH:
+                case SOUTH:
                     y -= 1;
                     break;
-                case State.WEST:
+                case WEST:
                     x -= 1;
                     break;
             }
@@ -86,16 +86,16 @@
             double y = Vertical;
             switch (Orientation)
             {
-                case State.NORTH:
+                case NORTH:
                     y -= 1;
                     break;
-                case State.EAST:
+                case EAST:
                     x -= 1;
                     break;
-                case State.SOUTH:
+                case SOUTH:
                     y += 1;
                     break;
-                case State.WEST:
+                case WEST:
                     x += 1;
                     break;
             }
