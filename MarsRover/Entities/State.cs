@@ -102,5 +102,10 @@
 
             return new(Orientation, x, y);
         }
+
+        public override string ToString()
+        {
+            return $"Orientation : {Orientation} \n X : {Horizontal} \n Y : {Vertical}";
+        }
     }
 }

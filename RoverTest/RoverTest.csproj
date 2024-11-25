@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Communication\Communication.csproj" />
     <ProjectReference Include="..\MarsRover\Mars_Rover.csproj" />
     <ProjectReference Include="..\Topology\Topology.csproj" />
   </ItemGroup>
