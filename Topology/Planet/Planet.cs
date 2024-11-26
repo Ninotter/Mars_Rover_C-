@@ -7,6 +7,8 @@
         protected double MinY { get; set; } = MIN_PLANET_SIZE_XY;
         protected double MaxX { get; set; }
         protected double MaxY { get; set; }
+        
+        protected List<Obstacle> Obstacles { get; set; } = new List<Obstacle>();
 
         public (double x, double y) CheckLimits(double x, double y)
         {
@@ -31,6 +33,16 @@
             }
 
             return (x, y);
+        }
+
+        public void AddObstacle(Obstacle obstacle)
+        {
+            this.Obstacles.Add(obstacle);
+        }
+
+        public void AddMultipleObstacles(List<Obstacle> obstacles)
+        {
+            this.Obstacles.AddRange(obstacles);
         }
     }
 }

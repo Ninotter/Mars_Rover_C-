@@ -7,5 +7,12 @@
             MaxX = maxX;
             MaxY = maxY;
         }
+
+        public TorroidalPlanet(double maxX, double maxY, List<Obstacle> obstacles)
+        {
+            MaxX = maxX;
+            MaxY = maxY;
+            Obstacles = obstacles;
+        } 
     }
 }
