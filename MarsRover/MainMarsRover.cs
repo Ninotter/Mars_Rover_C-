@@ -14,8 +14,9 @@ public class MainMarsRover
         roverListener.Subscribe((action) =>
         {
             Console.WriteLine(action);
-            State state = Interpreter.Send(action);
-            Console.WriteLine(state);
+            RoverState roverState = Interpreter.Send(action);
+            Console.WriteLine(roverState);
+            return roverState;
         });
         roverListener.CreateServer("127.0.0.1", 8080);
     }

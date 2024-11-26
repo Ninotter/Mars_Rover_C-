@@ -4,9 +4,9 @@ namespace Mars_Rover.Interfaces
 {
     public interface IRover
     {
-        public State RotateToRightSide();
-        public State RotateToLeftSide();
-        public State GoForward();
-        public State GoBackward();
+        public RoverState RotateToRightSide();
+        public RoverState RotateToLeftSide();
+        public RoverState GoForward();
+        public RoverState GoBackward();
     }
 }

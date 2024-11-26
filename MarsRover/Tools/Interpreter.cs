@@ -11,9 +11,9 @@ public static class Interpreter
     public const string LEFT = "L";
     public const string RIGHT = "R";
 
-    public static State Send(string command) => SetStateFromCommand(command);
+    public static RoverState Send(string command) => SetStateFromCommand(command);
 
-    private static State SetStateFromCommand(string command)
+    private static RoverState SetStateFromCommand(string command)
     {
         switch (command)
         {
@@ -35,7 +35,7 @@ public static class Interpreter
                 break;
         }
 
-        return _rover.VehicleState;
+        return _rover.VehicleRoverState;
     }
 
     public static Rover CreateRover(Planet planet)
@@ -50,8 +50,8 @@ public static class Interpreter
 
     public static Rover GetRover() => _rover;
 
-    public static State GetRoverState()
+    public static RoverState GetRoverState()
     {
-        return _rover.VehicleState;
+        return _rover.VehicleRoverState;
     }
 }

@@ -5,47 +5,47 @@ namespace Mars_Rover.Entities
 {
     public class Rover : IRover
     {
-        public State VehicleState { get; set; }
+        public RoverState VehicleRoverState { get; set; }
         public Planet Planet { get; set; }
 
         public Rover(Planet planet)
         {
-            VehicleState = new State();
+            VehicleRoverState = new RoverState();
             Planet = planet;
         }
 
-        public Rover(State vehicleState, Planet planet)
+        public Rover(RoverState vehicleRoverState, Planet planet)
         {
-            VehicleState = vehicleState;
+            VehicleRoverState = vehicleRoverState;
             Planet = planet;
         }
 
-        public State GoForward()
+        public RoverState GoForward()
         {
-            State newState = VehicleState.Forward();
-            var (x, y) = Planet.CheckLimits(newState.Horizontal, newState.Vertical);
-            VehicleState = new State(newState.Orientation, x, y);
-            return VehicleState;
+            RoverState newRoverState = VehicleRoverState.Forward();
+            var (x, y) = Planet.CheckLimits(newRoverState.Horizontal, newRoverState.Vertical);
+            VehicleRoverState = new RoverState(newRoverState.Orientation, x, y);
+            return VehicleRoverState;
         }
 
-        public State GoBackward()
+        public RoverState GoBackward()
         {
-            State newState = VehicleState.Backward();
-            var (x, y) = Planet.CheckLimits(newState.Horizontal, newState.Vertical);
-            VehicleState = new State(newState.Orientation, x, y);
-            return VehicleState;
+            RoverState newRoverState = VehicleRoverState.Backward();
+            var (x, y) = Planet.CheckLimits(newRoverState.Horizontal, newRoverState.Vertical);
+            VehicleRoverState = new RoverState(newRoverState.Orientation, x, y);
+            return VehicleRoverState;
         }
 
-        public State RotateToRightSide()
+        public RoverState RotateToRightSide()
         {
-            VehicleState = VehicleState.ClockwiseRotation();
-            return VehicleState;
+            VehicleRoverState = VehicleRoverState.ClockwiseRotation();
+            return VehicleRoverState;
         }
 
-        public State RotateToLeftSide()
+        public RoverState RotateToLeftSide()
         {
-            VehicleState = VehicleState.CounterclockwiseRotation();
-            return VehicleState;
+            VehicleRoverState = VehicleRoverState.CounterclockwiseRotation();
+            return VehicleRoverState;
         }
     }
 }

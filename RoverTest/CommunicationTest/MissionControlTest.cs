@@ -11,7 +11,9 @@ namespace RoverTest.CommunicationTest
             Interpreter.CreateRover(new InfinitePlanet());
 
             var fake = new FakeCommunicationTest(Interpreter.GetRover());
-            fake.Subscribe((action) => { Console.WriteLine(action); });
+            fake.Subscribe((action) => { Console.WriteLine(action);
+                return Interpreter.GetRoverState();
+            });
 
             fake.SendCommandAsync("A");
         }

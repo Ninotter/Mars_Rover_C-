@@ -4,10 +4,10 @@ using Mars_Rover.Tools;
 
 namespace RoverTest.CommunicationTest
 {
-    internal class FakeCommunicationTest : IProtocolCommunication, ICommandListener, ICommandSender
+    internal class FakeCommunicationTest : IProtocolCommunication, ICommandListener<RoverState>, ICommandSender
     {
         Rover _rover;
-        Action<string> _callback;
+        Func<string, RoverState> _callback;
 
         public FakeCommunicationTest(Rover rover)
         {
@@ -19,20 +19,20 @@ namespace RoverTest.CommunicationTest
             await Task.Delay(1000);
         }
 
-        public async Task DisconnectAsync()
+        public void DisconnectAsync()
         {
-            await Task.Delay(1000);
+            Task.Delay(1000);
         }
 
         public Task SendCommandAsync(string action)
         {
-            _rover.VehicleState = Interpreter.Send(action);
-            Console.WriteLine(_rover.VehicleState.ToString());
+            _rover.VehicleRoverState = Interpreter.Send(action);
+            Console.WriteLine(_rover.VehicleRoverState.ToString());
             _callback(action);
             return Task.CompletedTask;
         }
 
-        public void Subscribe(Action<string> resultingAction)
+        public void Subscribe(Func<string, RoverState> resultingAction)
         {
             _callback = resultingAction;
         }
