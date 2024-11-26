@@ -2,7 +2,7 @@ namespace Topology;
 
 public class Obstacle
 {
-    private (int x, int y) position;
+    public (int x, int y) position { get;}
 
     public Obstacle((int x, int y) position)
     {

@@ -1,27 +1,39 @@
+using System.Text;
+using Topology.Planet;
+
 namespace Mars_Rover.UI;
 
 public class Cartes
 {
-    private int maxX;
-    private int maxY;
+    private Planet _planet;
+    private (int x, int y) _coordinates;
 
-    public Cartes(int x, int y)
+    public Cartes(Planet planet)
     {
-        maxX = x;
-        maxY = y;
+        _planet = planet;
+        _coordinates = _planet.GetPlanetLimits();
     }
 
-    public void DisplayCard()
+    public string DisplayCard()
     {
-        var xDisplay = "";
-        for (int i = 0; i < maxX; i++)
+        var builder = new StringBuilder();
+        var cardLimitX = 0;
+        var totalRow = 0;
+        
+        foreach (var point in _planet.points)
         {
-            xDisplay += Carte_Symboles.OBSTACLE;
+            if (cardLimitX < _coordinates.x && totalRow < _coordinates.x)
+            {
+                builder.Append(point.isAvailable ? CarteSymboles.CASE_TO_DISCOVER : CarteSymboles.OBSTACLE);
+                cardLimitX++;
+            }
+            else
+            {
+                builder.AppendLine();
+                cardLimitX = 0;
+                totalRow++;
+            }
         }
-
-        for (int y = 0; y < maxY; y++)
-        {
-            Console.WriteLine(xDisplay);
-        }
+        return builder.ToString();
     }
 }

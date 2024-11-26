@@ -2,17 +2,19 @@
 {
     public class TorroidalPlanet : Planet
     {
-        public TorroidalPlanet(double maxX, double maxY)
+        public TorroidalPlanet(int maxX, int maxY)
         {
             MaxX = maxX;
             MaxY = maxY;
+            SetPlanetPoints();
         }
 
-        public TorroidalPlanet(double maxX, double maxY, List<Obstacle> obstacles)
+        public TorroidalPlanet(int maxX, int maxY, List<Obstacle> obstacles)
         {
             MaxX = maxX;
             MaxY = maxY;
             Obstacles = obstacles;
+            SetPlanetPoints();
         } 
     }
 }
