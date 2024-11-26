@@ -14,7 +14,8 @@ namespace MissionControl
 
             Console.WriteLine("Envoyer des commandes au rover");
 
-            while (isAlive) {
+            while (isAlive)
+            {
                 string action = Console.ReadLine() ?? "null";
                 await comm.SendCommandAsync(action);
 

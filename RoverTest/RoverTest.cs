@@ -49,7 +49,7 @@ namespace RoverTest
             rover.GoForward();
             Assert.AreEqual(1, rover.VehicleState.Horizontal);
         }
-        
+
         [Test]
         public void RoverGoBackwardOnSmallPlanetFromNorthOrientation()
         {
@@ -57,7 +57,5 @@ namespace RoverTest
             rover.GoBackward();
             Assert.AreEqual(10, rover.VehicleState.Vertical);
         }
-        
     }
-    
 }

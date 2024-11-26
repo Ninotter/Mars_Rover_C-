@@ -1,17 +1,12 @@
 ﻿using Communication.Communication;
 using Mars_Rover.Entities;
 using Mars_Rover.Tools;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RoverTest.CommunicationTest
 {
     internal class FakeCommunicationTest : IProtocolCommunication, ICommandListener, ICommandSender
     {
-        Rover _rover = null;
+        Rover _rover;
         Action<string> _callback;
 
         public FakeCommunicationTest(Rover rover)
