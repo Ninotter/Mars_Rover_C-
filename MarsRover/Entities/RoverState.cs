@@ -1,6 +1,6 @@
 ﻿namespace Mars_Rover.Entities
 {
-    public class State
+    public class RoverState
     {
         public const string NORTH = "NORTH";
         public const string EAST = "EAST";
@@ -12,52 +12,52 @@
 
         public double Vertical { get; } = 0;
 
-        public State()
+        public RoverState()
         {
         }
 
-        public State(string orientation, double horizontal, double vertical)
+        public RoverState(string orientation, double horizontal, double vertical)
         {
             this.Horizontal = horizontal;
             this.Vertical = vertical;
             this.Orientation = orientation;
         }
 
-        public State ClockwiseRotation()
+        public RoverState ClockwiseRotation()
         {
             switch (Orientation)
             {
                 case NORTH:
-                    return new State(EAST, Horizontal, Vertical);
+                    return new RoverState(EAST, Horizontal, Vertical);
                 case EAST:
-                    return new State(SOUTH, Horizontal, Vertical);
+                    return new RoverState(SOUTH, Horizontal, Vertical);
                 case SOUTH:
-                    return new State(WEST, Horizontal, Vertical);
+                    return new RoverState(WEST, Horizontal, Vertical);
                 case WEST:
-                    return new State(NORTH, Horizontal, Vertical);
+                    return new RoverState(NORTH, Horizontal, Vertical);
                 default:
-                    return new State(Orientation, Horizontal, Vertical);
+                    return new RoverState(Orientation, Horizontal, Vertical);
             }
         }
 
-        public State CounterclockwiseRotation()
+        public RoverState CounterclockwiseRotation()
         {
             switch (Orientation)
             {
                 case NORTH:
-                    return new State(WEST, Horizontal, Vertical);
+                    return new RoverState(WEST, Horizontal, Vertical);
                 case WEST:
-                    return new State(SOUTH, Horizontal, Vertical);
+                    return new RoverState(SOUTH, Horizontal, Vertical);
                 case SOUTH:
-                    return new State(EAST, Horizontal, Vertical);
+                    return new RoverState(EAST, Horizontal, Vertical);
                 case EAST:
-                    return new State(NORTH, Horizontal, Vertical);
+                    return new RoverState(NORTH, Horizontal, Vertical);
                 default:
-                    return new State(Orientation, Horizontal, Vertical);
+                    return new RoverState(Orientation, Horizontal, Vertical);
             }
         }
 
-        public State Forward()
+        public RoverState Forward()
         {
             double x = Horizontal;
             double y = Vertical;
@@ -80,7 +80,7 @@
             return new(Orientation, x, y);
         }
 
-        public State Backward()
+        public RoverState Backward()
         {
             double x = Horizontal;
             double y = Vertical;

@@ -17,12 +17,15 @@ namespace MissionControl
             while (isAlive)
             {
                 string action = Console.ReadLine() ?? "null";
-                await comm.SendCommandAsync(action);
 
                 if (action.Equals("exit"))
                 {
                     isAlive = false;
-                    await comm.DisconnectAsync();
+                    comm.DisconnectAsync();
+                }
+                else
+                {
+                    await comm.SendCommandAsync(action);
                 }
             }
         }

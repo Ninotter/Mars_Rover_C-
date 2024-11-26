@@ -34,7 +34,7 @@ public class InterpreterTest
     {
         Interpreter.CreateRover(new InfinitePlanet());
         Interpreter.Send(Interpreter.RIGHT);
-        Assert.That(Interpreter.GetRoverState().Orientation, Is.EqualTo(State.EAST));
+        Assert.That(Interpreter.GetRoverState().Orientation, Is.EqualTo(RoverState.EAST));
     }
     
     [Test]
@@ -61,7 +61,7 @@ public class InterpreterTest
         Interpreter.CreateRover(new InfinitePlanet());
         Interpreter.Send(Interpreter.RIGHT);
         Interpreter.Send(Interpreter.RIGHT);
-        Assert.That(Interpreter.GetRoverState().Orientation, Is.EqualTo(State.SOUTH));
+        Assert.That(Interpreter.GetRoverState().Orientation, Is.EqualTo(RoverState.SOUTH));
     }
     
     [Test]
@@ -89,7 +89,7 @@ public class InterpreterTest
     {
         Interpreter.CreateRover(new InfinitePlanet());
         Interpreter.Send(Interpreter.LEFT);
-        Assert.That(Interpreter.GetRoverState().Orientation, Is.EqualTo(State.WEST));
+        Assert.That(Interpreter.GetRoverState().Orientation, Is.EqualTo(RoverState.WEST));
     }
     
     [Test]

@@ -4,6 +4,6 @@
     {
         Task ConnectAsync(string ipAddress, int port);
 
-        Task DisconnectAsync();
+        void DisconnectAsync();
     }
 }

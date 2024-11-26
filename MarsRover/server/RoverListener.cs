@@ -1,18 +1,19 @@
 using System.Net.Sockets;
 using Communication.Communication;
+using Mars_Rover.Entities;
 
 namespace Mars_Rover.server;
 
-public class RoverListener : ICommandListener
+public class RoverListener : ICommandListener<RoverState>
 {
-    private Action<string> _callback;
+    private Func<string, RoverState> _callback;
     private bool _roverIsAlive = true;
 
     public RoverListener()
     {
     }
 
-    public void Subscribe(Action<string> resultingAction)
+    public void Subscribe(Func<string, RoverState> resultingAction)
     {
         _callback = resultingAction;
     }
@@ -37,14 +38,14 @@ public class RoverListener : ICommandListener
                 {
                     data = System.Text.Encoding.ASCII.GetString(bytes, 0, i);
                     Console.WriteLine("Received: {0}", data);
-
-                    data = data.ToUpper();
+                    var roverState = _callback(data);
+                    data = "Rover State: \n" +
+                           roverState;
 
                     byte[] msg = System.Text.Encoding.ASCII.GetBytes(data);
 
                     stream.Write(msg, 0, msg.Length);
                     Console.WriteLine("Sent: {0}", data);
-                    _callback(data);
                 }
             }
         }

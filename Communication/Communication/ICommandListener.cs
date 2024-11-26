@@ -1,7 +1,7 @@
 ﻿namespace Communication.Communication
 {
-    public interface ICommandListener
+    public interface ICommandListener<T>
     {
-        void Subscribe(Action<string> resultingAction);
+        void Subscribe(Func<string, T> resultingAction);
     }
 }

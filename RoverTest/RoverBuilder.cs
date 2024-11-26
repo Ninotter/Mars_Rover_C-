@@ -5,7 +5,7 @@ namespace RoverTest
 {
     internal class RoverBuilder
     {
-        private State state = new State();
+        private RoverState _roverState = new RoverState();
         private Planet planet = new InfinitePlanet();
 
         public static RoverBuilder CreateBuilder()
@@ -37,21 +37,21 @@ namespace RoverTest
             return this;
         }
 
-        public RoverBuilder AddState(State state)
+        public RoverBuilder AddState(RoverState roverState)
         {
-            this.state = state;
+            this._roverState = roverState;
             return this;
         }
 
-        public RoverBuilder AddState(double horizontal, double vertical, string orientation = State.NORTH)
+        public RoverBuilder AddState(double horizontal, double vertical, string orientation = RoverState.NORTH)
         {
-            this.state = new State(orientation, horizontal, vertical);
+            this._roverState = new RoverState(orientation, horizontal, vertical);
             return this;
         }
 
         public Rover Build()
         {
-            return new Rover(state, planet);
+            return new Rover(_roverState, planet);
         }
     }
 }
