@@ -21,9 +21,8 @@ class Program
             rover);
         Console.Write(cartes.DisplayCard());
         
-        
-        
         Console.WriteLine();
+        
         rover.GoForward();
         Cartes cartes2 = new Cartes(rover);
         Console.Write(cartes2.DisplayCard());
