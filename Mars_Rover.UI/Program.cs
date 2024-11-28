@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using Mars_Rover.Entities;
+using Mars_Rover.Tools;
 using Topology;
 using Topology.Planet;
 
@@ -12,31 +13,26 @@ class Program
         Console.OutputEncoding = Encoding.UTF8;
         List<Obstacle> obstacles = new List<Obstacle>();
         obstacles.Add(new Obstacle((4, 3)));
-        //obstacles.Add(new Obstacle((4, 3)));
-        //obstacles.Add(new Obstacle((3, 2)));
+        obstacles.Add(new Obstacle((4, 8)));
+        obstacles.Add(new Obstacle((3, 2)));
         Rover rover = new Rover(
             new RoverState(RoverState.NORTH, 3, 6),
-            new TorroidalPlanet(5, 10, obstacles));
+            new TorroidalPlanet(10, 10, obstacles));
+        Interpreter.CreateRover(rover);
         Cartes cartes = new Cartes(
             rover);
         Console.Write(cartes.DisplayCard());
-        
-        Console.WriteLine();
-        
-        rover.GoForward();
-        Cartes cartes2 = new Cartes(rover);
-        Console.Write(cartes2.DisplayCard());
-        
-        Console.WriteLine();
-        
-        rover.RotateToLeftSide();
-        Cartes cartes3 = new Cartes(rover);
-        Console.Write(cartes3.DisplayCard());
-        
-        Console.WriteLine();
-        
-        rover.GoForward();
-        Cartes cartes4 = new Cartes(rover);
-        Console.Write(cartes4.DisplayCard());
+
+        while (true)
+        {
+            var newInput = Console.ReadLine();
+            if (newInput != null)
+            {
+                rover.VehicleRoverState = Interpreter.Send(newInput);
+            }
+
+            Console.WriteLine(cartes.RefreshCard(rover));
+            
+        }
     }
 }

@@ -38,11 +38,21 @@ public static class Interpreter
         return _rover.VehicleRoverState;
     }
 
-    public static Rover CreateRover(Planet planet)
+    public static Rover CreateRoverWithPlanet(Planet planet)
     {
         if (_rover == null)
         {
             _rover = new Rover(planet);
+        }
+
+        return _rover;
+    }
+    
+    public static Rover CreateRover(Rover rover)
+    {
+        if (_rover == null)
+        {
+            _rover = rover;
         }
 
         return _rover;

@@ -61,4 +61,10 @@ public class Cartes
         }
         return builder.ToString();
     }
+
+    public string RefreshCard(Rover rover)
+    {
+        _rover = rover;
+        return DisplayCard();
+    }
 }
