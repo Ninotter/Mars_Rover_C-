@@ -59,7 +59,7 @@
         {
             for (int i = MaxHorizontalX; i >= 0; i--)
             {
-                for (int j = MaxVerticalY; j >= 0; j--)
+                for (int j = 0; j <= MaxVerticalY; j++)
                 {
                     var isAvailable = true;
                     PlanetPoint point = new PlanetPoint(i, j, isAvailable);
