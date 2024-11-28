@@ -19,13 +19,13 @@ namespace RoverTest
             return this;
         }
 
-        public RoverBuilder AddTorroidalPlanet(double xy)
+        public RoverBuilder AddTorroidalPlanet(int xy)
         {
             this.planet = new TorroidalPlanet(xy, xy);
             return this;
         }
 
-        public RoverBuilder AddTorroidalPlanet(double x, double y)
+        public RoverBuilder AddTorroidalPlanet(int x, int y)
         {
             this.planet = new TorroidalPlanet(x, y);
             return this;
