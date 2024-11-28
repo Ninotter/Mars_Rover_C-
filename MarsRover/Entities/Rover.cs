@@ -23,16 +23,16 @@ namespace Mars_Rover.Entities
         public RoverState GoForward()
         {
             RoverState newRoverState = VehicleRoverState.Forward();
-            var (x, y) = Planet.CheckLimits(newRoverState.Horizontal, newRoverState.Vertical);
-            VehicleRoverState = new RoverState(newRoverState.Orientation, x, y);
+            var (horizontalX, verticalY) = Planet.CheckLimits(newRoverState.HorizontalX, newRoverState.VerticalY);
+            VehicleRoverState = new RoverState(newRoverState.Orientation, horizontalX, verticalY);
             return VehicleRoverState;
         }
 
         public RoverState GoBackward()
         {
             RoverState newRoverState = VehicleRoverState.Backward();
-            var (x, y) = Planet.CheckLimits(newRoverState.Horizontal, newRoverState.Vertical);
-            VehicleRoverState = new RoverState(newRoverState.Orientation, x, y);
+            var (horizontalX, verticalY) = Planet.CheckLimits(newRoverState.HorizontalX, newRoverState.VerticalY);
+            VehicleRoverState = new RoverState(newRoverState.Orientation, horizontalX, verticalY);
             return VehicleRoverState;
         }
 

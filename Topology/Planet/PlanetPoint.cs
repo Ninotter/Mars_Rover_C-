@@ -2,20 +2,20 @@ namespace Topology.Planet;
 
 public class PlanetPoint
 {
-    public int x;
-    public int y;
+    public int HorizontalX;
+    public int VerticalY;
     public bool isAvailable {get;set;}
 
-    public PlanetPoint(int x, int y, bool isAvailable)
+    public PlanetPoint(int horizontalX, int verticalY, bool isAvailable)
     {
-        this.x = x;
-        this.y = y;
+        this.HorizontalX = horizontalX;
+        this.VerticalY = verticalY;
         this.isAvailable = isAvailable;
     }
     
-    public PlanetPoint(int x, int y)
+    public PlanetPoint(int horizontalX, int verticalY)
     {
-        this.x = x;
-        this.y = y;
+        this.HorizontalX = horizontalX;
+        this.VerticalY = verticalY;
     }
 }

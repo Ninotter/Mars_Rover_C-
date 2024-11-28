@@ -8,18 +8,18 @@
         public const string WEST = "WEST";
 
         public string Orientation { get; } = NORTH;
-        public double Horizontal { get; } = 0;
+        public int HorizontalX { get; } = 0;
 
-        public double Vertical { get; } = 0;
+        public int VerticalY { get; } = 0;
 
         public RoverState()
         {
         }
 
-        public RoverState(string orientation, double horizontal, double vertical)
+        public RoverState(string orientation, int horizontalX, int verticalY)
         {
-            this.Horizontal = horizontal;
-            this.Vertical = vertical;
+            this.HorizontalX = horizontalX;
+            this.VerticalY = verticalY;
             this.Orientation = orientation;
         }
 
@@ -28,15 +28,15 @@
             switch (Orientation)
             {
                 case NORTH:
-                    return new RoverState(EAST, Horizontal, Vertical);
+                    return new RoverState(EAST, HorizontalX, VerticalY);
                 case EAST:
-                    return new RoverState(SOUTH, Horizontal, Vertical);
+                    return new RoverState(SOUTH, HorizontalX, VerticalY);
                 case SOUTH:
-                    return new RoverState(WEST, Horizontal, Vertical);
+                    return new RoverState(WEST, HorizontalX, VerticalY);
                 case WEST:
-                    return new RoverState(NORTH, Horizontal, Vertical);
+                    return new RoverState(NORTH, HorizontalX, VerticalY);
                 default:
-                    return new RoverState(Orientation, Horizontal, Vertical);
+                    return new RoverState(Orientation, HorizontalX, VerticalY);
             }
         }
 
@@ -45,22 +45,22 @@
             switch (Orientation)
             {
                 case NORTH:
-                    return new RoverState(WEST, Horizontal, Vertical);
+                    return new RoverState(WEST, HorizontalX, VerticalY);
                 case WEST:
-                    return new RoverState(SOUTH, Horizontal, Vertical);
+                    return new RoverState(SOUTH, HorizontalX, VerticalY);
                 case SOUTH:
-                    return new RoverState(EAST, Horizontal, Vertical);
+                    return new RoverState(EAST, HorizontalX, VerticalY);
                 case EAST:
-                    return new RoverState(NORTH, Horizontal, Vertical);
+                    return new RoverState(NORTH, HorizontalX, VerticalY);
                 default:
-                    return new RoverState(Orientation, Horizontal, Vertical);
+                    return new RoverState(Orientation, HorizontalX, VerticalY);
             }
         }
 
         public RoverState Forward()
         {
-            double x = Horizontal;
-            double y = Vertical;
+            int x = HorizontalX;
+            int y = VerticalY;
             switch (Orientation)
             {
                 case NORTH:
@@ -82,8 +82,8 @@
 
         public RoverState Backward()
         {
-            double x = Horizontal;
-            double y = Vertical;
+            int x = HorizontalX;
+            int y = VerticalY;
             switch (Orientation)
             {
                 case NORTH:
@@ -105,7 +105,7 @@
 
         public override string ToString()
         {
-            return $"Orientation : {Orientation} \n X : {Horizontal} \n Y : {Vertical}";
+            return $"Orientation : {Orientation} \n X : {HorizontalX} \n Y : {VerticalY}";
         }
     }
 }

@@ -10,7 +10,7 @@ namespace RoverTest
             Rover rover = RoverBuilder.CreateBuilder().AddState(10, 5, RoverState.NORTH).Build();
             rover.RotateToRightSide();
             rover.GoForward();
-            Assert.AreEqual(11, rover.VehicleRoverState.Horizontal);
+            Assert.AreEqual(11, rover.VehicleRoverState.HorizontalX);
         }
 
         [Test]
@@ -19,7 +19,7 @@ namespace RoverTest
             Rover rover = RoverBuilder.CreateBuilder().AddState(10, 5, RoverState.NORTH).Build();
             rover.RotateToLeftSide();
             rover.GoForward();
-            Assert.AreEqual(9, rover.VehicleRoverState.Horizontal);
+            Assert.AreEqual(9, rover.VehicleRoverState.HorizontalX);
         }
 
         [Test]
@@ -30,7 +30,7 @@ namespace RoverTest
             rover.RotateToLeftSide();
             rover.GoForward();
             rover.GoForward();
-            Assert.AreEqual(7, rover.VehicleRoverState.Vertical);
+            Assert.AreEqual(7, rover.VehicleRoverState.VerticalY);
         }
 
         [Test]
@@ -38,7 +38,7 @@ namespace RoverTest
         {
             Rover rover = RoverBuilder.CreateBuilder().AddState(5, 10, RoverState.NORTH).AddTorroidalPlanet(10).Build();
             rover.GoForward();
-            Assert.AreEqual(0, rover.VehicleRoverState.Vertical);
+            Assert.AreEqual(0, rover.VehicleRoverState.VerticalY);
         }
 
         [Test]
@@ -47,7 +47,7 @@ namespace RoverTest
             Rover rover = RoverBuilder.CreateBuilder().AddState(10, 5, RoverState.EAST).AddTorroidalPlanet(10).Build();
             rover.GoForward();
             rover.GoForward();
-            Assert.AreEqual(1, rover.VehicleRoverState.Horizontal);
+            Assert.AreEqual(1, rover.VehicleRoverState.HorizontalX);
         }
 
         [Test]
@@ -55,7 +55,7 @@ namespace RoverTest
         {
             Rover rover = RoverBuilder.CreateBuilder().AddState(0, 0, RoverState.NORTH).AddTorroidalPlanet(10).Build();
             rover.GoBackward();
-            Assert.AreEqual(10, rover.VehicleRoverState.Vertical);
+            Assert.AreEqual(10, rover.VehicleRoverState.VerticalY);
         }
     }
 }

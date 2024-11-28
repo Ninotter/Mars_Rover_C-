@@ -18,7 +18,7 @@ public class InterpreterTest
     {
         Interpreter.CreateRover(new TorroidalPlanet(10, 10));
         Interpreter.Send(Interpreter.FORWARD);
-        Assert.That(Interpreter.GetRoverState().Vertical, Is.EqualTo(1));
+        Assert.That(Interpreter.GetRoverState().VerticalY, Is.EqualTo(1));
     }
     
     [Test]
@@ -26,7 +26,7 @@ public class InterpreterTest
     {   
         Interpreter.CreateRover(new TorroidalPlanet(10, 10));
         Interpreter.Send(Interpreter.BACKWARD);
-        Assert.That(Interpreter.GetRoverState().Vertical, Is.EqualTo(10));
+        Assert.That(Interpreter.GetRoverState().VerticalY, Is.EqualTo(10));
     }
 
     [Test]
@@ -43,7 +43,7 @@ public class InterpreterTest
         Interpreter.CreateRover(new TorroidalPlanet(10, 10));
         Interpreter.Send(Interpreter.RIGHT);
         Interpreter.Send(Interpreter.FORWARD);
-        Assert.That(Interpreter.GetRoverState().Horizontal, Is.EqualTo(1));
+        Assert.That(Interpreter.GetRoverState().HorizontalX, Is.EqualTo(1));
     }
     
     [Test]
@@ -52,7 +52,7 @@ public class InterpreterTest
         Interpreter.CreateRover(new TorroidalPlanet(10, 10));
         Interpreter.Send(Interpreter.RIGHT);
         Interpreter.Send(Interpreter.BACKWARD);
-        Assert.That(Interpreter.GetRoverState().Horizontal, Is.EqualTo(10));
+        Assert.That(Interpreter.GetRoverState().HorizontalX, Is.EqualTo(10));
     }
     
     [Test]
@@ -71,7 +71,7 @@ public class InterpreterTest
         Interpreter.Send(Interpreter.RIGHT);
         Interpreter.Send(Interpreter.RIGHT);
         Interpreter.Send(Interpreter.FORWARD);
-        Assert.That(Interpreter.GetRoverState().Vertical, Is.EqualTo(10));
+        Assert.That(Interpreter.GetRoverState().VerticalY, Is.EqualTo(10));
     }
     
     [Test]
@@ -81,7 +81,7 @@ public class InterpreterTest
         Interpreter.Send(Interpreter.RIGHT);
         Interpreter.Send(Interpreter.RIGHT);
         Interpreter.Send(Interpreter.BACKWARD);
-        Assert.That(Interpreter.GetRoverState().Vertical, Is.EqualTo(1));
+        Assert.That(Interpreter.GetRoverState().VerticalY, Is.EqualTo(1));
     }
     
     [Test]
@@ -98,7 +98,7 @@ public class InterpreterTest
         Interpreter.CreateRover(new TorroidalPlanet(10, 10));
         Interpreter.Send(Interpreter.LEFT);
         Interpreter.Send(Interpreter.FORWARD);
-        Assert.That(Interpreter.GetRoverState().Horizontal, Is.EqualTo(10));
+        Assert.That(Interpreter.GetRoverState().HorizontalX, Is.EqualTo(10));
     }
     
     [Test]
@@ -107,6 +107,6 @@ public class InterpreterTest
         Interpreter.CreateRover(new TorroidalPlanet(10, 10));
         Interpreter.Send(Interpreter.LEFT);
         Interpreter.Send(Interpreter.BACKWARD);
-        Assert.That(Interpreter.GetRoverState().Horizontal, Is.EqualTo(1));
+        Assert.That(Interpreter.GetRoverState().HorizontalX, Is.EqualTo(1));
     }
 }

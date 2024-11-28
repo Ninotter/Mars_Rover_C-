@@ -2,9 +2,9 @@ namespace Topology;
 
 public class Obstacle
 {
-    public (int x, int y) position { get;}
+    public (int horizontalX, int verticalY) position { get;}
 
-    public Obstacle((int x, int y) position)
+    public Obstacle((int horizontalX, int verticalY) position)
     {
         this.position = position;
     }

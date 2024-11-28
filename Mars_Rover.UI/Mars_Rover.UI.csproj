@@ -8,6 +8,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\MarsRover\Mars_Rover.csproj" />
       <ProjectReference Include="..\Topology\Topology.csproj" />
     </ItemGroup>
 

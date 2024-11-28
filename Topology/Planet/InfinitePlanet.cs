@@ -4,10 +4,10 @@
     {
         public InfinitePlanet()
         {
-            MaxX = Int32.MaxValue;
-            MaxY = Int32.MaxValue;
-            MinX = double.NegativeInfinity;
-            MinY = double.NegativeInfinity;
+            MaxHorizontalX = Int32.MaxValue;
+            MaxVerticalY = Int32.MaxValue;
+            MinX = Int32.MinValue;
+            MinY = Int32.MinValue;
         }
     }
 }

@@ -2,34 +2,34 @@
 {
     public abstract class Planet
     {
-        private const double MIN_PLANET_SIZE_XY = 0;
-        protected double MinX { get; set; } = MIN_PLANET_SIZE_XY;
-        protected double MinY { get; set; } = MIN_PLANET_SIZE_XY;
-        protected int MaxX { get; set; }
-        protected int MaxY { get; set; }
+        private const int MIN_PLANET_SIZE_XY = 0;
+        protected int MinX { get; set; } = MIN_PLANET_SIZE_XY;
+        protected int MinY { get; set; } = MIN_PLANET_SIZE_XY;
+        protected int MaxHorizontalX { get; set; }
+        protected int MaxVerticalY { get; set; }
         public List<PlanetPoint> points = new List<PlanetPoint>();
         protected List<Obstacle> Obstacles { get; set; } = new List<Obstacle>();
 
-        public (double x, double y) CheckLimits(double x, double y)
+        public (int x, int y) CheckLimits(int x, int y)
         {
             if (x < MIN_PLANET_SIZE_XY)
             {
-                x = MaxX - x - 1;
+                x = MaxHorizontalX - x - 1;
             }
 
             if (y < MIN_PLANET_SIZE_XY)
             {
-                y = MaxY - y - 1;
+                y = MaxVerticalY - y - 1;
             }
 
-            if (x > this.MaxX)
+            if (x > this.MaxHorizontalX)
             {
-                x = (x - this.MaxX - 1);
+                x = (x - this.MaxHorizontalX - 1);
             }
 
-            if (y > this.MaxY)
+            if (y > this.MaxVerticalY)
             {
-                y = (y - this.MaxY - 1);
+                y = (y - this.MaxVerticalY - 1);
             }
 
             return (x, y);
@@ -57,23 +57,27 @@
 
         public void SetPlanetPoints()
         {
-            for (int i = 0; i <= MaxX; i++)
+            for (int i = MaxHorizontalX; i >= 0; i--)
             {
-                for (int j = 0; j <= MaxY; j++)
+                for (int j = MaxVerticalY; j >= 0; j--)
                 {
+                    var isAvailable = true;
+                    PlanetPoint point = new PlanetPoint(i, j, isAvailable);
                     foreach (var obstacle in Obstacles)
                     {
-                        var isAvailable = obstacle.position != (j, i);
-                        PlanetPoint point = new PlanetPoint(i, j, isAvailable);
-                        points.Add(point);
+                        if ((i, j) == obstacle.position)
+                        {
+                         point.isAvailable = false;   
+                        }
                     }
+                    points.Add(point);
                 }
             }
         }
 
         public (int x, int y) GetPlanetLimits()
         {
-            return (MaxX, MaxY);
+            return (MaxHorizontalX, MaxVerticalY);
         }
 
         public void GetPlanetPoint()
@@ -81,7 +85,7 @@
             
             foreach (var point in points)
             {
-                Console.WriteLine(point.x + " " + point.y + " " + point.isAvailable);
+                Console.WriteLine(point.HorizontalX + " " + point.VerticalY + " " + point.isAvailable);
             }
             
             //return pointToDisplay;
@@ -94,8 +98,8 @@
             {
                 foreach (var existingObstacle in Obstacles)
                 {
-                    isObstaclePositionValid = obstacle.position.x == existingObstacle.position.x &&
-                                              obstacle.position.y == existingObstacle.position.y;
+                    isObstaclePositionValid = obstacle.position.horizontalX == existingObstacle.position.horizontalX &&
+                                              obstacle.position.verticalY == existingObstacle.position.verticalY;
                 }
             }
 
