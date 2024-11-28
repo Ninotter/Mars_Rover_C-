@@ -70,7 +70,7 @@ namespace RoverTest
         public void RoverGoesForwardOnSmallPlanetFromNorthOrientationAndHitsObstacle()
         {
             Rover rover = RoverBuilder.CreateBuilder().AddState(5, 5, RoverState.NORTH).AddTorroidalPlanetWithObstacles(10, new Topology.Obstacle((5, 6))).Build();
-            rover.GoBackward();
+            rover.GoForward();
             Assert.AreEqual(5, rover.VehicleRoverState.Vertical);
         }
     }
