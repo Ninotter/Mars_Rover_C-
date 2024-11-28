@@ -1,11 +1,7 @@
-<<<<<<< develop
 ﻿using System.Text;
 using Mars_Rover.Entities;
-=======
-﻿using Mars_Rover.Entities;
 using Mars_Rover.Tools;
 using System.Text;
->>>>>>> local
 using Topology;
 using Topology.Planet;
 
@@ -18,11 +14,12 @@ class Program
         Console.OutputEncoding = Encoding.UTF8;
         List<Obstacle> obstacles = new List<Obstacle>();
         obstacles.Add(new Obstacle((4, 3)));
-        //obstacles.Add(new Obstacle((4, 3)));
-        //obstacles.Add(new Obstacle((3, 2)));
+        obstacles.Add(new Obstacle((4, 8)));
+        obstacles.Add(new Obstacle((3, 2)));
         Rover rover = new Rover(
             new RoverState(RoverState.NORTH, 3, 6),
-            new TorroidalPlanet(5, 10, obstacles));
+            new TorroidalPlanet(10, 10, obstacles));
+        Interpreter.CreateRover(rover);
         Cartes cartes = new Cartes(
             rover);
         Console.Write(cartes.DisplayCard());

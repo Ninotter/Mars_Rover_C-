@@ -68,17 +68,17 @@
 
         public void SetPlanetPoints()
         {
-            for (int i = MaxHorizontalX; i >= 0; i--)
+            for (int j = MaxVerticalY; j >=0 ; j--)
             {
-                for (int j = 0; j <= MaxVerticalY; j++)
-                {
+            for (int i = 0; i <= MaxHorizontalX; i++)
+            {
                     var isAvailable = true;
                     PlanetPoint point = new PlanetPoint(i, j, isAvailable);
                     foreach (var obstacle in Obstacles)
                     {
                         if ((i, j) == obstacle.position)
                         {
-                            point.isAvailable = false;
+                            point.isAvailable = false;   
                         }
                     }
                     points.Add(point);
