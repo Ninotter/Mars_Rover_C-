@@ -35,6 +35,17 @@
             return (x, y);
         }
 
+        /// <summary>
+        /// Check for an obstacle in the given position
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns>True if there is an obstacle, false if there is none</returns>
+        public bool CheckForObstacle(double x, double y)
+        {
+            return Obstacles.Any(o => o.position.horizontalX == x && o.position.verticalY == y);
+        }
+
         public void AddObstacle(Obstacle obstacle)
         {
             if (CheckValidityOfObstaclePosition(obstacle))
@@ -67,7 +78,7 @@
                     {
                         if ((i, j) == obstacle.position)
                         {
-                         point.isAvailable = false;   
+                            point.isAvailable = false;
                         }
                     }
                     points.Add(point);
@@ -82,12 +93,12 @@
 
         public void GetPlanetPoint()
         {
-            
+
             foreach (var point in points)
             {
                 Console.WriteLine(point.HorizontalX + " " + point.VerticalY + " " + point.isAvailable);
             }
-            
+
             //return pointToDisplay;
         }
 
