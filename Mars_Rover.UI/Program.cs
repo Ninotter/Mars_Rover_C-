@@ -1,5 +1,11 @@
+<<<<<<< develop
 ﻿using System.Text;
 using Mars_Rover.Entities;
+=======
+﻿using Mars_Rover.Entities;
+using Mars_Rover.Tools;
+using System.Text;
+>>>>>>> local
 using Topology;
 using Topology.Planet;
 
@@ -20,24 +26,18 @@ class Program
         Cartes cartes = new Cartes(
             rover);
         Console.Write(cartes.DisplayCard());
-        
-        
-        
-        Console.WriteLine();
-        rover.GoForward();
-        Cartes cartes2 = new Cartes(rover);
-        Console.Write(cartes2.DisplayCard());
-        
-        Console.WriteLine();
-        
-        rover.RotateToLeftSide();
-        Cartes cartes3 = new Cartes(rover);
-        Console.Write(cartes3.DisplayCard());
-        
-        Console.WriteLine();
-        
-        rover.GoForward();
-        Cartes cartes4 = new Cartes(rover);
-        Console.Write(cartes4.DisplayCard());
+
+        while (true)
+        {
+            var newInput = Console.ReadKey();
+            string input = ArrowKeysControl.KeyToCommand(newInput.Key);
+            if (newInput != null)
+            {
+                rover.VehicleRoverState = Interpreter.Send(input);
+            }
+
+            Console.WriteLine(cartes.RefreshCard(rover));
+
+        }
     }
 }
