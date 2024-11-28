@@ -1,4 +1,5 @@
 ﻿using Mars_Rover.Entities;
+using Topology;
 using Topology.Planet;
 
 namespace RoverTest
@@ -25,6 +26,13 @@ namespace RoverTest
             return this;
         }
 
+        public RoverBuilder AddTorroidalPlanetWithObstacles(int xy, params Obstacle[] obstacles)
+        {
+            var listObstacles = new List<Obstacle>(obstacles);
+            this.planet = new TorroidalPlanet(xy, xy, listObstacles);
+            return this;
+        }
+
         public RoverBuilder AddTorroidalPlanet(int x, int y)
         {
             this.planet = new TorroidalPlanet(x, y);
@@ -34,6 +42,13 @@ namespace RoverTest
         public RoverBuilder AddInfinitePlanet()
         {
             this.planet = new InfinitePlanet();
+            return this;
+        }
+
+        public RoverBuilder AddInfinitePlanetWithObstacles(params Obstacle[] obstacles)
+        {
+            var listObstacles = new List<Obstacle>(obstacles);
+            this.planet = new InfinitePlanet(listObstacles);
             return this;
         }
 
