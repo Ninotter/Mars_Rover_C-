@@ -20,12 +20,12 @@ public class Cartes
     public string DisplayCard()
     {
         var builder = new StringBuilder();
-        var columnLimitY = 0;
-        var totalRow = 0;
+        var verticalLimit = _coordinates.y + 1;
+        var horizontalLimit = _coordinates.x + 1;
         for (var i = 0; i < _planet.points.Count; i++)
         {
             var point = _planet.points[i];
-            if (totalRow < _coordinates.x + 1)
+            if (horizontalLimit > 0)
             {
                 if (_rover.VehicleRoverState.HorizontalX == point.HorizontalX && _rover.VehicleRoverState.VerticalY == point.VerticalY)
                 {
@@ -44,21 +44,27 @@ public class Cartes
                             builder.Append(CarteSymboles.WEST_ORIENTATION);
                             break;
                     }
-                    columnLimitY++;
+                    horizontalLimit--;
                 }
                 else
                 {
                     builder.Append(point.isAvailable ? CarteSymboles.CASE_TO_DISCOVER : CarteSymboles.OBSTACLE);
-                    columnLimitY++;
+                    horizontalLimit--;
                 }
             }
-            if (columnLimitY == _coordinates.y + 1 ){
+            if (horizontalLimit == 0){
                 builder.AppendLine();
-                columnLimitY = 0;
-                totalRow++;
+                horizontalLimit = _coordinates.x + 1;
+                verticalLimit--;
             }
             
         }
         return builder.ToString();
+    }
+
+    public string RefreshCard(Rover rover)
+    {
+        _rover = rover;
+        return DisplayCard();
     }
 }

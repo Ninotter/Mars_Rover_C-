@@ -10,7 +10,7 @@ public class MainMarsRover
     static void Main(string[] args)
     {
         RoverListener roverListener = new RoverListener();
-        Interpreter.CreateRover(new InfinitePlanet());
+        Interpreter.CreateRoverWithPlanet(new InfinitePlanet());
         roverListener.Subscribe((action) =>
         {
             Console.WriteLine(action);
