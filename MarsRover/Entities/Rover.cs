@@ -24,7 +24,10 @@ namespace Mars_Rover.Entities
         {
             RoverState newRoverState = VehicleRoverState.Forward();
             var (x, y) = Planet.CheckLimits(newRoverState.Horizontal, newRoverState.Vertical);
-            VehicleRoverState = new RoverState(newRoverState.Orientation, x, y);
+            if (!Planet.CheckForObstacle(x, y))
+            {
+                VehicleRoverState = new RoverState(newRoverState.Orientation, x, y);
+            }
             return VehicleRoverState;
         }
 
@@ -32,7 +35,10 @@ namespace Mars_Rover.Entities
         {
             RoverState newRoverState = VehicleRoverState.Backward();
             var (x, y) = Planet.CheckLimits(newRoverState.Horizontal, newRoverState.Vertical);
-            VehicleRoverState = new RoverState(newRoverState.Orientation, x, y);
+            if (!Planet.CheckForObstacle(x, y))
+            {
+                VehicleRoverState = new RoverState(newRoverState.Orientation, x, y);
+            }
             return VehicleRoverState;
         }
 
