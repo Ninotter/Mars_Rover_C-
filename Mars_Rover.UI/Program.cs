@@ -25,14 +25,13 @@ class Program
 
         while (true)
         {
-            var newInput = Console.ReadLine();
-            if (newInput != null)
+            var newInput = Console.ReadKey();
+            if (newInput.Key != null)
             {
-                rover.VehicleRoverState = Interpreter.Send(newInput);
+                rover.VehicleRoverState = Interpreter.Send(newInput.Key.ToString());
             }
-
+            Console.Clear();
             Console.WriteLine(cartes.RefreshCard(rover));
-            
         }
     }
 }

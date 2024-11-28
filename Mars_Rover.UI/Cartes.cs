@@ -44,11 +44,20 @@ public class Cartes
                             builder.Append(CarteSymboles.WEST_ORIENTATION);
                             break;
                     }
+                    point.isDiscovered = true;
                     horizontalLimit--;
                 }
                 else
                 {
-                    builder.Append(point.isAvailable ? CarteSymboles.CASE_TO_DISCOVER : CarteSymboles.OBSTACLE);
+                    if (point.isDiscovered)
+                    {
+                        builder.Append(point.isAvailable ? CarteSymboles.CASE_DISCOVERED : CarteSymboles.OBSTACLE);
+                    }
+                    else
+                    {
+                        builder.Append(CarteSymboles.CASE_TO_DISCOVER);
+                    }
+                    
                     horizontalLimit--;
                 }
             }
