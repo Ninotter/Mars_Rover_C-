@@ -30,11 +30,11 @@ class Program
             string input = ArrowKeysControl.KeyToCommand(newInput.Key);
             if (newInput != null)
             {
-                rover.VehicleRoverState = Interpreter.Send(input);
+                rover.VehicleRoverState = Interpreter.Send(newInput);
             }
-
+            Console.SetCursorPosition(0,0); //clears console, avoids flickering
             Console.WriteLine(cartes.RefreshCard(rover));
-
+            
         }
     }
 }
