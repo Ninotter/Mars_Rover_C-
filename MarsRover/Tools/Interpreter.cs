@@ -11,6 +11,11 @@ public static class Interpreter
     public const string LEFT = "L";
     public const string RIGHT = "R";
 
+    public static void ResetRover()
+    {
+        _rover = null; // For test teardown purposes
+    }
+
     public static RoverState Send(string command) => SetStateFromCommand(command);
 
     private static RoverState SetStateFromCommand(string command)

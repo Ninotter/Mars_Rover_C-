@@ -4,8 +4,14 @@ using Topology.Planet;
 
 namespace RoverTest;
 
+[TestFixture]
 public class InterpreterTest
 {
+    [TearDown]
+    public void RunAfter()
+    {
+        Interpreter.ResetRover();
+    }
     [Test]
     public void CreateANewRoverTest()
     {
