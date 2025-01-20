@@ -8,7 +8,7 @@ namespace RoverTest.CommunicationTest
         [Test]
         public void TestEnvoiCommandeAvancer()
         {
-            Interpreter.CreateRover(new InfinitePlanet());
+            Interpreter.CreateRoverWithPlanet(new InfinitePlanet());
 
             var fake = new FakeCommunicationTest(Interpreter.GetRover());
             fake.Subscribe((action) => { Console.WriteLine(action);
