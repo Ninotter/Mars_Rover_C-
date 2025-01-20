@@ -25,12 +25,13 @@ class Program
 
         while (true)
         {
+            
             var newInput = Console.ReadKey();
             if (newInput.Key != null)
             {
                 rover.VehicleRoverState = Interpreter.Send(newInput.Key.ToString());
             }
-            Console.Clear();
+            Console.SetCursorPosition(0,0); //clears console, avoids flickering
             Console.WriteLine(cartes.RefreshCard(rover));
         }
     }
